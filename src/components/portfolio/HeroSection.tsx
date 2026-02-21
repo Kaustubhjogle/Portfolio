@@ -1,3 +1,4 @@
+import { HYPERLINKS } from "@/utlis/Links";
 import { useEffect, useRef, useState } from "react";
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "Front-End Developer", "Backend Developer"];
@@ -78,9 +79,9 @@ const HeroSection = () => {
           Building thoughtful software with an obsession for detail, performance, and craft.
         </p>
         <div className="flex gap-6">
-          {["GitHub", "LinkedIn", "Email"].map((link) => (
-            <a key={link} href="#" className="section-label hover-line">
-              {link}
+          {HYPERLINKS?.map((link) => (
+            <a key={link.name} href={link?.url} target={link?.target} rel={link.name !== "Email" ? "noopener noreferrer" : undefined} className="section-label hover-line">
+              {link.name}
             </a>
           ))}
         </div>

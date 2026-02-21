@@ -1,3 +1,5 @@
+import { HYPERLINKS } from "@/utlis/Links";
+
 const Footer = () => {
   const year = new Date().getFullYear();
 
@@ -9,9 +11,9 @@ const Footer = () => {
       </div>
       <div className="flex flex-col items-end gap-2">
         <div className="flex gap-6">
-          {["github.com/kaustubh_jogle", "linkedin.com/in/kaustubhJogle", "kaustubhrjogle@gmail.com"].map((link) => (
-            <a key={link} href="#" className="font-mono text-xs text-dim hover-line">
-              {link}
+          {HYPERLINKS?.map((link) => (
+            <a key={link?.name} href={link?.url} target={link?.target} className="font-mono text-xs text-dim hover-line">
+              {link?.label}
             </a>
           ))}
         </div>
