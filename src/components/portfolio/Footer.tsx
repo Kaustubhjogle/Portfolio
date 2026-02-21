@@ -1,4 +1,4 @@
-import { HYPERLINKS } from "@/utlis/Links";
+import { HYPERLINKS } from "@/utils/Links";
 
 const Footer = () => {
   const year = new Date().getFullYear();

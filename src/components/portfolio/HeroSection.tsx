@@ -1,4 +1,4 @@
-import { HYPERLINKS } from "@/utlis/Links";
+import { HYPERLINKS } from "@/utils/Links";
 import { useEffect, useRef, useState } from "react";
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "Front-End Developer", "Backend Developer"];
