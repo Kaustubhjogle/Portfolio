@@ -29,9 +29,9 @@ const HeroSection = () => {
   return (
     <section id="intro" className="min-h-screen flex flex-col justify-start pt-24 md:pt-32 pb-0 px-6 md:px-16 lg:px-24 relative">
       {/* top nav */}
-      <nav className="absolute top-0 left-0 right-0 flex justify-between items-center px-6 md:px-16 lg:px-24 py-10">
+      <nav className="absolute top-0 left-0 right-0 flex flex-col md:flex-row justify-between items-center px-6 md:px-16 lg:px-24 py-6 md:py-10 gap-4 md:gap-0">
         <span className="section-label">Portfolio — 2026</span>
-        <div className="flex items-center gap-2 md:gap-3">
+        <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3">
           {["Intro", "Experience", "Skills", "Tech", "Education"].map((item, index, array) => (
             <span key={item} className="flex items-center gap-2 md:gap-3">
               <a
@@ -74,11 +74,11 @@ const HeroSection = () => {
       </div>
 
       {/* bottom strip */}
-      <div className="mt-12 border-t border-hairline pt-6 flex justify-between items-end">
-        <p className="font-mono text-xs text-dim max-w-xs leading-relaxed">
+      <div className="mt-12 border-t border-hairline py-6 md:pt-6 md:pb-0 flex flex-col md:flex-row justify-between items-center md:items-end gap-6 md:gap-0">
+        <p className="font-mono text-xs text-dim max-w-xs leading-relaxed text-center md:text-left">
           Building thoughtful software with an obsession for detail, performance, and craft.
         </p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6">
           {HYPERLINKS?.map((link) => (
             <a key={link.name} href={link?.url} target={link?.target} rel={link.name !== "Email" ? "noopener noreferrer" : undefined} className="section-label hover-line">
               {link.name}
