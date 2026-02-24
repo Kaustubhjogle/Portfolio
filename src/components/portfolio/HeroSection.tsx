@@ -30,7 +30,9 @@ const HeroSection = () => {
     <section id="intro" className="min-h-screen flex flex-col justify-start pt-24 md:pt-32 pb-0 px-6 md:px-16 lg:px-24 relative">
       {/* top nav */}
       <nav className="absolute top-0 left-0 right-0 flex flex-col md:flex-row justify-between items-center px-6 md:px-16 lg:px-24 py-6 md:py-10 gap-4 md:gap-0">
-        <span className="section-label">Portfolio — 2026</span>
+        <a href="/Kaustubh_Jogle_Resume.pdf" target="_blank" rel="noopener noreferrer" className="section-label hover-line transition-colors hover:text-ink">
+          Download CV
+        </a>
         <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3">
           {["Intro", "Experience", "Skills", "Tech", "Education"].map((item, index, array) => (
             <span key={item} className="flex items-center gap-2 md:gap-3">
