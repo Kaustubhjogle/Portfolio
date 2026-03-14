@@ -1,3 +1,5 @@
+import { Link } from "lucide-react";
+
 const EXPERIENCES = [
   {
     year: "2023 — Now",
@@ -58,6 +60,26 @@ const ExperienceSection = () => {
           </div>
         ))}
         <div className="border-t border-hairline" />
+
+        <div
+          className="group border-t border-hairline py-10 hover:bg-secondary/30 transition-colors duration-300 -mx-6 md:-mx-16 lg:-mx-24 px-6 md:px-16 lg:px-24 flex justify-center"
+        >
+          <div>
+            <div className="flex flex-wrap items-baseline gap-3 mb-3">
+              <h3 className="serif-italic text-2xl text-ink">The best way to learn about me is through the people I've worked with:</h3>
+            </div>
+
+            <div>
+              <a href="https://www.linkedin.com/in/kaustubhjogle/details/recommendations/?detailScreenTabIndex=0" className="flex flex-row ">
+                <p className="font-mono text-sm text-dim leading-relaxed max-w-xl mb-2 mr-2">
+                  Recommendations from past teammates LinkedIn
+                </p>
+                <Link className="w-3 h-3 my-1" />
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );
