@@ -29,23 +29,23 @@ const ExperienceSection = () => {
           >
             {/* year */}
             <div className="pt-1">
-              <span className="font-mono text-xs text-dim">{exp.year}</span>
+              <span className="font-mono text-sm text-dim">{exp.year}</span>
             </div>
 
             {/* content */}
             <div>
               <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                <h3 className="serif-italic text-2xl text-ink">{exp.role}</h3>
+                <h3 className="serif-italic text-3xl text-ink">{exp.role}</h3>
                 <span className="section-label">@ {exp.company}</span>
               </div>
-              <p className="font-mono text-xs text-dim leading-relaxed max-w-xl mb-4">
+              <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-4">
                 {exp.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {exp.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[10px] border border-hairline px-2 py-0.5 text-dim"
+                    className="font-mono text-xs border border-hairline px-2 py-0.5 text-dim"
                   >
                     {tag}
                   </span>
@@ -55,7 +55,7 @@ const ExperienceSection = () => {
 
             {/* location */}
             <div className="pt-1 text-right">
-              <span className="font-mono text-[10px] text-dim">{exp.location}</span>
+              <span className="font-mono text-xs text-dim">{exp.location}</span>
             </div>
           </div>
         ))}
@@ -66,15 +66,15 @@ const ExperienceSection = () => {
         >
           <div>
             <div className="flex flex-wrap items-baseline gap-3 mb-3">
-              <h3 className="serif-italic text-2xl text-ink">The best way to learn about me is through the people I've worked with:</h3>
+              <h3 className="serif-italic text-3xl text-ink">The best way to learn about me is through the people I've worked with:</h3>
             </div>
 
             <div>
               <a href="https://www.linkedin.com/in/kaustubhjogle/details/recommendations/?detailScreenTabIndex=0" className="flex flex-row ">
-                <p className="font-mono text-sm text-dim leading-relaxed max-w-xl mb-2 mr-2">
+                <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-2 mr-2">
                   Recommendations from past teammates LinkedIn
                 </p>
-                <Link className="w-3 h-3 my-1" />
+                <Link className="w-4 h-4 my-1" />
               </a>
             </div>
           </div>

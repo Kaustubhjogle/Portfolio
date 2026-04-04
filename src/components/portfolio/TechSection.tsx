@@ -1,5 +1,5 @@
 const STACK = [
-  { category: "Languages", items: ["TypeScript", "JavaScript", "Java", "Rust (learning)"] },
+  { category: "Languages", items: ["TypeScript", "JavaScript", "Java"] },
   { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Vite"] },
   { category: "Backend", items: ["Java", "Spring Boot", "REST APIs"] },
   // { category: "Database", items: ["PostgreSQL", "MongoDB", "Redis", "Supabase", "Prisma"] },
@@ -23,7 +23,7 @@ const TechSection = () => {
               {group.items.map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <span className="w-1 h-1 bg-ink rounded-full flex-shrink-0" />
-                  <span className="font-mono text-sm text-ink">{item}</span>
+                  <span className="font-mono text-base text-ink">{item}</span>
                 </li>
               ))}
             </ul>

@@ -114,7 +114,7 @@
 
   .section-label {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: hsl(var(--dim));

@@ -19,8 +19,8 @@ const SOFT_SKILLS = [
 const SkillBar = ({ name, level }: { name: string; level: number }) => (
   <div className="group">
     <div className="flex justify-between items-baseline mb-2">
-      <span className="font-mono text-xs text-ink">{name}</span>
-      <span className="font-mono text-[10px] text-dim">{level}%</span>
+      <span className="font-mono text-base text-ink">{name}</span>
+      <span className="font-mono text-xs text-dim">{level}%</span>
     </div>
     <div className="h-px bg-hairline w-full relative overflow-hidden">
       <div
@@ -59,14 +59,14 @@ const SkillsSection = () => {
                 key={s}
                 className="border border-hairline px-4 py-2 hover:border-ink hover:text-ink transition-colors duration-200"
               >
-                <span className="font-mono text-xs text-dim hover:text-ink transition-colors">{s}</span>
+                <span className="font-mono text-sm text-dim hover:text-ink transition-colors">{s}</span>
               </div>
             ))}
           </div>
 
           {/* big quote */}
           <blockquote className="mt-16 border-l-2 border-ink pl-6">
-            <p className="serif-italic text-xl text-ink leading-relaxed">
+            <p className="serif-italic text-2xl text-ink leading-relaxed">
               "Simplicity is the ultimate sophistication — in code, as in life."
             </p>
           </blockquote>

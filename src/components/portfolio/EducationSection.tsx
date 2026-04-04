@@ -37,14 +37,14 @@ const EducationSection = () => {
         {EDUCATION.map((edu, i) => (
           <div key={i} className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 group">
             <div>
-              <span className="font-mono text-xs text-dim">{edu.year}</span>
+              <span className="font-mono text-sm text-dim">{edu.year}</span>
             </div>
             <div className="border-t border-hairline pt-8 md:pt-0 md:border-t-0 md:border-l md:border-hairline md:pl-8">
-              <h3 className="display-giant text-3xl text-ink mb-1">{edu.degree.toUpperCase()}</h3>
-              <p className="serif-italic text-sm text-dim mb-4">{edu.institution}</p>
+              <h3 className="display-giant text-4xl text-ink mb-1">{edu.degree.toUpperCase()}</h3>
+              <p className="serif-italic text-xl text-dim mb-4">{edu.institution}</p>
               <ul className="space-y-2">
                 {edu.details.map((d) => (
-                  <li key={d} className="flex items-start gap-3 font-mono text-xs text-dim leading-relaxed">
+                  <li key={d} className="flex items-start gap-3 font-mono text-base text-dim leading-relaxed">
                     <span className="mt-1.5 w-1 h-1 bg-dim rounded-full flex-shrink-0" />
                     {d}
                   </li>

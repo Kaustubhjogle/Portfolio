@@ -18,12 +18,12 @@ const ProjectSection = () => {
           >
             <div className="ml-10">
               <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                <h3 className="serif-italic text-3xl text-ink">{project.title}</h3>
+                <h3 className="serif-italic text-4xl text-ink">{project.title}</h3>
               </div>
-              <p className="font-mono text-sm text-dim leading-relaxed max-w-4xl mb-4">
+              <p className="font-mono text-base text-dim leading-relaxed max-w-4xl mb-4">
                 {/* {project.description} */}
                 {project.description.map((d) => (
-                  <li key={d} className="flex items-start gap-3 font-mono text-md text-dim leading-relaxed">
+                  <li key={d} className="flex items-start gap-3 font-mono text-base text-dim leading-relaxed">
                     <span className="mt-1.5 w-1 h-1 bg-dim rounded-full flex-shrink-0" />
                     {d}
                   </li>
@@ -33,7 +33,7 @@ const ProjectSection = () => {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-base border border-hairline px-2 py-0.5 text-dim"
+                    className="font-mono text-xs border border-hairline px-2 py-0.5 text-dim"
                   >
                     {tag}
                   </span>
