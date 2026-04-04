@@ -34,7 +34,7 @@ const HeroSection = () => {
           Download CV
         </a>
         <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3">
-          {["Intro", "Experience", "Skills", "Tech", "Education"].map((item, index, array) => (
+          {["Intro", "Experience", "Skills", "Tech", "Projects", "Education"].map((item, index, array) => (
             <span key={item} className="flex items-center gap-2 md:gap-3">
               <a
                 href={`#${item.toLowerCase()}`}

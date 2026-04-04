@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-const SECTIONS = ["Intro", "Experience", "Skills", "Tech", "Education"];
+const SECTIONS = ["Intro", "Experience", "Skills", "Tech", "Projects", "Education"];
 
 const BottomNavbar = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -15,32 +15,34 @@ const BottomNavbar = () => {
             } else {
                 setIsVisible(false);
             }
+
+            // Scroll Spy Logic
+            // Force select last section if user reaches the very bottom of the page
+            const isBottom = window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight - 50;
+            if (isBottom) {
+                setActiveSection(SECTIONS[SECTIONS.length - 1].toLowerCase());
+                return;
+            }
+
+            let current = "intro";
+            SECTIONS.forEach((item) => {
+                const id = item.toLowerCase();
+                const element = document.getElementById(id);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    // Section is active if its top enters upper 40% of the viewport
+                    if (rect.top <= window.innerHeight * 0.4) {
+                        current = id;
+                    }
+                }
+            });
+            setActiveSection(current);
         };
 
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll(); // Trigger immediately on mount
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
-                    }
-                });
-            },
-            { rootMargin: "-30% 0px -60% 0px" } // Adjust margins to trigger when section is in roughly top-middle of screen
-        );
-
-        SECTIONS.forEach((item) => {
-            const element = document.getElementById(item.toLowerCase());
-            if (element) observer.observe(element);
-        });
-
-        return () => observer.disconnect();
     }, []);
 
     return (
