@@ -54,7 +54,7 @@ const HeroSection = () => {
 
       {/* giant name */}
       <div className="my-auto flex flex-col justify-center items-center w-full py-12 md:py-24 overflow-hidden z-10 relative">
-        <p className="section-label mb-2">Hello, I am</p>
+        <p className="section-label mb-2 text-xl">Hello, I am</p>
         <div className="flex flex-wrap items-end justify-center gap-3 md:gap-5">
           <h1 className="display-giant text-[clamp(1.2rem,6vw,6rem)] text-ink leading-none relative">
             KAUSTUBH

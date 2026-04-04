@@ -7,7 +7,7 @@ const ProjectSection = () => {
       {/* section header */}
       <div className="flex items-center gap-6 mb-20">
         <span className="section-label">04 /</span>
-        <h2 className="display-giant text-[clamp(3rem,8vw,8rem)] text-ink">PROJECTS</h2>
+        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">PROJECTS</h2>
       </div>
 
       <div className="space-y-0">

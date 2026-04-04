@@ -30,7 +30,7 @@ const EducationSection = () => {
     <section id="education" className="py-32 px-6 md:px-16 lg:px-24">
       <div className="flex items-center gap-6 mb-20">
         <span className="section-label">05 /</span>
-        <h2 className="display-giant text-[clamp(3rem,8vw,8rem)] text-ink">EDUCATION</h2>
+        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">EDUCATION</h2>
       </div>
 
       <div className="space-y-16">

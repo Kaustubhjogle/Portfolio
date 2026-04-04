@@ -36,7 +36,7 @@ const SkillsSection = () => {
     <section id="skills" className="py-32 px-6 md:px-16 lg:px-24">
       <div className="flex items-center gap-6 mb-20">
         <span className="section-label">02 /</span>
-        <h2 className="display-giant text-[clamp(3rem,8vw,8rem)] text-ink">SKILLS</h2>
+        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">SKILLS</h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
