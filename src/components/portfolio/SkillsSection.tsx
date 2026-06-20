@@ -67,7 +67,7 @@ const SkillsSection = () => {
           {/* big quote */}
           <blockquote className="mt-16 border-l-2 border-ink pl-6">
             <p className="serif-italic text-2xl text-ink leading-relaxed">
-              "Simplicity is the ultimate sophistication — in code, as in life."
+              "Simplicity is the ultimate sophistication, in code, as in life."
             </p>
           </blockquote>
         </div>
