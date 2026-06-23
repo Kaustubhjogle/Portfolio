@@ -1,0 +1,203 @@
+/* RobotGame.css */
+
+.robot-game-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 40;
+}
+
+/* Cell Counter styling */
+.cell-counter {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 50;
+  background: rgba(3, 3, 3, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid hsl(var(--hairline));
+  padding: 8px 16px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: hsl(var(--ink));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+}
+
+.cell-counter-pip {
+  width: 8px;
+  height: 8px;
+  background: #fbbf24; /* gold accent matching git stars */
+  border-radius: 50%;
+  box-shadow: 0 0 8px #fbbf24;
+  animation: cell-pip-pulse 2s infinite ease-in-out;
+}
+
+.cell-counter-text {
+  font-weight: 500;
+}
+
+/* Redesigned Full-screen overlay status screens */
+.robot-game-status {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(3, 3, 3, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  font-family: var(--font-mono);
+  pointer-events: auto;
+  animation: status-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.robot-game-status-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 6.5rem);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  line-height: 0.9;
+}
+
+.robot-game-status--dead .robot-game-status-title {
+  color: #f43f5e; /* Rose/Red */
+  text-shadow: 0 0 20px rgba(244, 63, 94, 0.3);
+}
+
+.robot-game-status--won .robot-game-status-title {
+  color: #fbbf24; /* Gold/Yellow */
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.robot-game-status-sub {
+  font-size: 0.875rem;
+  color: hsl(var(--dim));
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.robot-game-status-btn {
+  background: transparent;
+  color: hsl(var(--ink));
+  border: 1px solid hsl(var(--ink));
+  padding: 12px 32px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0px; /* high-contrast sharp buttons */
+}
+
+.robot-game-status-btn:hover {
+  background: hsl(var(--ink));
+  color: hsl(var(--paper));
+}
+
+.robot-game-status-hint {
+  font-size: 0.65rem;
+  color: hsl(var(--dim));
+  margin-top: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Side Tab Toggle Styling */
+.game-toggle-side {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: rgba(3, 3, 3, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-left: 1px solid hsl(var(--hairline));
+  border-top: 1px solid hsl(var(--hairline));
+  border-bottom: 1px solid hsl(var(--hairline));
+  padding: 20px 8px;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: hsl(var(--dim));
+  pointer-events: auto;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.game-toggle-side:hover {
+  color: hsl(var(--ink));
+  border-color: hsl(var(--ink));
+  transform: translate(-6px, -50%); /* pop out from the edge */
+  padding-right: 12px;
+}
+
+.game-toggle-side--active {
+  background: hsl(var(--ink));
+  color: hsl(var(--paper));
+  border-color: hsl(var(--ink));
+}
+
+.game-toggle-side--active:hover {
+  background: hsl(var(--ink));
+  color: hsl(var(--paper));
+  border-color: hsl(var(--ink));
+  transform: translate(0, -50%); /* don't translate when active to avoid distracting */
+  padding-right: 8px;
+}
+
+.game-toggle-side-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin: 4px 0;
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes cell-pip-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow: 0 0 4px #fbbf24;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 12px #fbbf24;
+  }
+}
+
+@keyframes status-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
