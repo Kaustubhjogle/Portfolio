@@ -17,4 +17,15 @@ export const PROJECTS = [
     githubUrl: "https://github.com/Kaustubhjogle/What-The-Cron",
     liveUrl: "https://what-the-cron.vercel.app/",
   },
+  {
+    title: "PromptPane — AI Chat Navigator",
+    description: [
+      "Lost track of a message 40 scrolls up in a ChatGPT conversation. Built a Chrome extension instead of scrolling again.",
+      "PromptPane adds a navigable prompt index to AI chat interfaces every message you sent, with a reply preview, clickable to jump straight there",
+      "Ships to real users on the Chrome Web Store. Works on ChatGPT, Gemini, and Claude.",
+    ],
+    tags: ["Chrome Extension", "JavaScript", "Open Source", "Shipped"],
+    liveUrl:
+      "https://chromewebstore.google.com/detail/promptpane/ejijlepcjdgncielegenkmglcbleacbl",
+  },
 ];
