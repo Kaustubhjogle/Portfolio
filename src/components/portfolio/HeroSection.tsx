@@ -56,11 +56,9 @@ const HeroSection = () => {
       <div className="my-auto flex flex-col justify-center items-center w-full py-12 md:py-24 overflow-hidden z-10 relative">
         <p className="section-label mb-2 text-xl">Hello, I am</p>
         <div className="flex flex-wrap items-end justify-center gap-3 md:gap-5">
-          <h1 className="display-giant text-[clamp(1.2rem,6vw,6rem)] text-ink leading-none relative">
-            KAUSTUBH
-          </h1>
-          <h1 className="display-giant text-[clamp(1.2rem,6vw,6rem)] text-ink leading-none relative">
-            JOGLE
+          <h1 className="display-giant text-[clamp(1.2rem,6vw,6rem)] text-ink leading-none relative flex flex-wrap items-end justify-center gap-3 md:gap-5">
+            <span>KAUSTUBH</span>
+            <span>JOGLE</span>
           </h1>
           <span className="serif-italic text-[clamp(1.2rem,2vw,2rem)] text-dim mb-1 max-md:mb-0 pb-0 relative">
             .dev
@@ -81,7 +79,7 @@ const HeroSection = () => {
         {/* bottom strip */}
         <div className="mt-8 border-t border-hairline py-6 md:pt-6 md:pb-0 flex flex-col md:flex-row justify-between items-center md:items-end gap-6 md:gap-0">
           <p className="font-mono text-sm text-dim max-w-xs leading-relaxed text-center md:text-left">
-            Building thoughtful software with an obsession for detail, performance, and craft.
+            Building thoughtful software with an obsession for detail, performance, and craft. <a href="#experience" className="text-ink hover-line">See my work experience →</a>
           </p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {HYPERLINKS?.map((link) => (

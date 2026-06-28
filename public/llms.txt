@@ -1,0 +1,55 @@
+# Kaustubh Jogle — Software Engineer Portfolio
+
+> Personal portfolio website of Kaustubh Jogle, a Software Engineer specialising in React, TypeScript, and full-stack development. Currently building scalable digital lending platforms at IIFL Finance.
+
+## About
+
+Kaustubh Jogle is a Software Engineer based in Mumbai, India, with expertise in building high-performance web applications. He specialises in React, TypeScript, Next.js, and Java Spring Boot. His work focuses on creating scalable, user-friendly interfaces with an obsession for detail, performance, and craft.
+
+## Experience
+
+- **Software Engineer at IIFL Finance (2023–Present)**: Designed and developed scalable, user-friendly interfaces and migrated 8+ legacy modules to a modern React-based stack for IIFL's digital lending platform, powering 5,000 Cr+ AUM and 300 Cr+ monthly disbursals. Improved application speed by 25% using React, TypeScript, Redux Toolkit, Saga, and Ant Design.
+
+## Skills
+
+### Technical
+- UI Architecture (95%)
+- API Design (88%)
+- Performance Optimisation (85%)
+- System Design (80%)
+- Database Modelling (78%)
+- DevOps & CI/CD (72%)
+
+### Soft Skills
+- Technical Writing, Code Review, Mentorship, Cross-functional Collaboration, Product Thinking, Agile/Scrum
+
+## Tech Stack
+- **Languages**: TypeScript, JavaScript, Java
+- **Frontend**: React, Next.js, Tailwind CSS, Framer Motion, Vite
+- **Backend**: Java, Spring Boot, REST APIs
+
+## Projects
+
+### WhatTheCron — Cron Expression Builder & AI Translator
+Built a full-stack two-way cron expression translator with a visual field builder and AI-powered natural language input using the Gemini API. Designed REST API endpoints using Next.js Route Handlers to securely proxy Gemini API requests server-side.
+- Tech: React, Next.js, Tailwind CSS, TypeScript, REST API, Gemini API
+- GitHub: https://github.com/Kaustubhjogle/What-The-Cron
+- Live: https://what-the-cron.vercel.app/
+
+### PromptPane — AI Chat Navigator
+A Chrome extension that adds a navigable prompt index to AI chat interfaces. Every message you sent gets a reply preview, clickable to jump straight there. Ships to real users on the Chrome Web Store. Works on ChatGPT, Gemini, and Claude.
+- Tech: Chrome Extension, JavaScript, Open Source
+- Chrome Web Store: https://chromewebstore.google.com/detail/promptpane/ejijlepcjdgncielegenkmglcbleacbl
+
+## Education
+
+- **B.Tech in Computer Engineering** — Thadomal Shahani Engineering College (2021–2023), CGPA 9.58
+- **Diploma in Computer Engineering** — Shri Bhagubhai Mafatlal Polytechnic (2017–2022), 94.80%
+- **SSC** — John XXIII High School (2016–2017), 90.60%
+
+## Contact
+
+- Website: https://kaustubhjogle.site
+- GitHub: https://github.com/kaustubhjogle
+- LinkedIn: https://linkedin.com/in/kaustubhjogle
+- Email: kaustubhrjogle@gmail.com

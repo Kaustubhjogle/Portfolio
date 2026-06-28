@@ -5,6 +5,7 @@ import SkillsSection from "@/components/portfolio/SkillsSection";
 import TechSection from "@/components/portfolio/TechSection";
 import ProjectSection from "@/components/portfolio/ProjectSection";
 import EducationSection from "@/components/portfolio/EducationSection";
+import FAQSection from "@/components/portfolio/FAQSection";
 import Footer from "@/components/portfolio/Footer";
 import BottomNavbar from "@/components/layout/BottomNavbar";
 import RobotGame from "@/components/game/RobotGame";
@@ -37,6 +38,9 @@ const Index = () => {
       <div className="h-px bg-hairline mx-6 md:mx-16 lg:mx-24" />
 
       <EducationSection />
+      <div className="h-px bg-hairline mx-6 md:mx-16 lg:mx-24" />
+
+      <FAQSection />
 
       <Footer />
 

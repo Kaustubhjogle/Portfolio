@@ -2,6 +2,7 @@ const EDUCATION = [
   {
     degree: "Bachelor of Technology in Computer Engineering",
     institution: "Thadomal Shahani Engineering College",
+    institutionUrl: "https://tsec.edu",
     year: "2021 — 2023",
     details: [
       "Graduated with Distinction — CGPA 9.58",
@@ -10,6 +11,7 @@ const EDUCATION = [
   {
     degree: "Diploma in Computer Engineering",
     institution: "Shri Bhagubhai Mafatlal Polytechnic",
+    institutionUrl: "https://sbmp.ac.in",
     year: "2017 - 2022",
     details: [
       "Percentage: 94.80%"
@@ -18,6 +20,7 @@ const EDUCATION = [
   {
     degree: "SSC",
     institution: "John XXIII High School",
+    institutionUrl: undefined,
     year: "2016 - 2017",
     details: [
       "Percentage: 90.60%",
@@ -41,7 +44,13 @@ const EducationSection = () => {
             </div>
             <div className="border-t border-hairline pt-8 md:pt-0 md:border-t-0 md:border-l md:border-hairline md:pl-8">
               <h3 className="display-giant text-4xl text-ink mb-1">{edu.degree.toUpperCase()}</h3>
-              <p className="serif-italic text-xl text-dim mb-4">{edu.institution}</p>
+              <p className="serif-italic text-xl text-dim mb-4">
+                {edu.institutionUrl ? (
+                  <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="hover-line">{edu.institution}</a>
+                ) : (
+                  edu.institution
+                )}
+              </p>
               <ul className="space-y-2">
                 {edu.details.map((d) => (
                   <li key={d} className="flex items-start gap-3 font-mono text-base text-dim leading-relaxed">

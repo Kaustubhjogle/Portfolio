@@ -7,7 +7,7 @@ const EXPERIENCES = [
     company: "IIFL Finance",
     location: "Mumbai, India",
     description:
-      "Designed and developed scalable, user-friendly interfaces and migrated 8+ legacy modules to a modern React-based stack for IIFL’s digital lending platform, powering 5,000 Cr+ AUM and 300 Cr+ monthly disbursals. Implemented responsive UIs using React, TypeScript, Redux Toolkit, Saga, and Ant Design, improving application speed by 25%",
+      "Designed and developed scalable, user-friendly interfaces and migrated 8+ legacy modules to a modern React-based stack for IIFL's digital lending platform, powering 5,000 Cr+ AUM and 300 Cr+ monthly disbursals. Implemented responsive UIs using React, TypeScript, Redux Toolkit, Saga, and Ant Design, improving application speed by 25%",
     tags: ["React", "TypeScript", "Next.js"],
   }
 ];
@@ -39,7 +39,7 @@ const ExperienceSection = () => {
                 <span className="section-label">@ {exp.company}</span>
               </div>
               <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-4">
-                {exp.description}
+                {exp.description} <a href="#tech" className="text-ink hover-line">View my full tech stack →</a>
               </p>
               <div className="flex flex-wrap gap-2">
                 {exp.tags.map((tag) => (
@@ -70,7 +70,7 @@ const ExperienceSection = () => {
             </div>
 
             <div>
-              <a href="https://www.linkedin.com/in/kaustubhjogle/details/recommendations/?detailScreenTabIndex=0" className="flex flex-row ">
+              <a href="https://www.linkedin.com/in/kaustubhjogle/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noopener noreferrer" className="flex flex-row ">
                 <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-2 mr-2">
                   Recommendations from past teammates LinkedIn
                 </p>

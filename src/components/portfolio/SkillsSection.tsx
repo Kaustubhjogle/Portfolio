@@ -70,6 +70,10 @@ const SkillsSection = () => {
               "Simplicity is the ultimate sophistication, in code, as in life."
             </p>
           </blockquote>
+
+          <p className="font-mono text-sm text-dim mt-8 leading-relaxed">
+            See these skills in action — <a href="#projects" className="text-ink hover-line">explore my projects →</a>
+          </p>
         </div>
       </div>
     </section>
