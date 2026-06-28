@@ -52,7 +52,7 @@ const BottomNavbar = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12 pointer-events-none"
             )}
         >
-            <nav className="bg-paper/90 backdrop-blur-md border border-hairline rounded-full px-6 py-3 flex items-center justify-center gap-4 md:gap-6 shadow-xl shadow-black/5 min-w-[320px]">
+            <nav className="bg-paper/90 backdrop-blur-md border border-hairline rounded-full px-3 md:px-6 py-2.5 md:py-3 flex items-center justify-center gap-2 md:gap-6 shadow-xl shadow-black/5">
                 {SECTIONS.map((item) => {
                     const isActive = activeSection === item.toLowerCase();
                     return (
