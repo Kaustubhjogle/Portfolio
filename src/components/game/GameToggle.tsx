@@ -19,13 +19,13 @@ const GameToggle = ({ active, onToggle }: GameToggleProps) => {
         <>
           <X className="w-4 h-4 transition-transform duration-300 hover:rotate-90" />
           <span className="game-toggle-side-text">Close</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse shadow-[0_0_8px_#f43f5e]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-dim animate-gentle-pulse" />
         </>
       ) : (
         <>
-          <Gamepad2 className="w-4 h-4 animate-bounce" style={{ animationDuration: '3s' }} />
+          <Gamepad2 className="w-4 h-4 animate-gentle-float" />
           <span className="game-toggle-side-text">Play Game</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-ink animate-gentle-pulse" />
         </>
       )}
     </button>

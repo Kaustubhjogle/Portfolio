@@ -17,7 +17,7 @@ const Footer = () => {
             </a>
           ))}
         </div>
-        <p className="font-mono text-[10px] text-dim">© {year} — Designed & built with Love ❤️</p>
+        <p className="font-mono text-[10px] text-dim">© {year} — Built from scratch, shipped with obsession</p>
       </div>
     </footer>
   );

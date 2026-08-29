@@ -8,10 +8,6 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
 # production
 /build
 /dist
@@ -29,14 +25,22 @@ yarn-error.log*
 
 # local env files
 .env
-.env*.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
 
-# vercel
-.vercel
+# editor / local tooling
+.vscode/
+!.vscode/extensions.json
+.idea/
+.cursor/
 
-# typescript
+# AI coding assistant / skill directories
+/.agent/
+/.agents/
+/.claude/
+/.codex/
+/.gemini/
+/.impeccable/
+
+# TypeScript
 *.tsbuildinfo
-next-env.d.ts

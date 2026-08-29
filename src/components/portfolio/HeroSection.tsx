@@ -1,5 +1,5 @@
 import { HYPERLINKS } from "@/utils/Links";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "Front-End Developer", "Backend Developer"];
 
@@ -7,6 +7,13 @@ const HeroSection = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    // Trigger entrance after a short mount delay
+    const revealTimer = setTimeout(() => setRevealed(true), 150);
+    return () => clearTimeout(revealTimer);
+  }, []);
 
   useEffect(() => {
     const current = ROLES[roleIndex];
@@ -34,7 +41,7 @@ const HeroSection = () => {
           Download CV
         </a>
         <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3">
-          {["Intro", "Experience", "Skills", "Tech", "Projects", "Education"].map((item, index, array) => (
+          {["Intro", "Experience", "Skills", "Projects", "Education"].map((item, index, array) => (
             <span key={item} className="flex items-center gap-2 md:gap-3">
               <a
                 href={`#${item.toLowerCase()}`}
@@ -52,15 +59,42 @@ const HeroSection = () => {
 
       <div className="flex-none h-10 md:h-16 hidden md:block"></div>
 
-      {/* giant name */}
+      {/* giant name — authored clip-path reveal */}
       <div className="my-auto flex flex-col justify-center items-center w-full py-12 md:py-24 overflow-hidden z-10 relative">
-        <p className="section-label mb-2 text-xl">Hello, I am</p>
+        <p
+          className="section-label mb-2 text-xl transition-opacity duration-500 ease-out"
+          style={{ opacity: revealed ? 1 : 0 }}
+        >
+          Hello, I am
+        </p>
         <div className="flex flex-wrap items-end justify-center gap-3 md:gap-5">
           <h1 className="display-giant text-[clamp(1.2rem,6vw,6rem)] text-ink leading-none relative flex flex-wrap items-end justify-center gap-3 md:gap-5">
-            <span>KAUSTUBH</span>
-            <span>JOGLE</span>
+            <span
+              className="hero-reveal"
+              style={{
+                clipPath: revealed ? 'inset(0 0 0 0)' : 'inset(0 100% 0 0)',
+                transition: 'clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
+              }}
+            >
+              KAUSTUBH
+            </span>
+            <span
+              className="hero-reveal"
+              style={{
+                clipPath: revealed ? 'inset(0 0 0 0)' : 'inset(0 100% 0 0)',
+                transition: 'clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s',
+              }}
+            >
+              JOGLE
+            </span>
           </h1>
-          <span className="serif-italic text-[clamp(1.2rem,2vw,2rem)] text-dim mb-1 max-md:mb-0 pb-0 relative">
+          <span
+            className="serif-italic text-[clamp(1.2rem,2vw,2rem)] text-dim mb-1 max-md:mb-0 pb-0 relative transition-opacity duration-500 ease-out"
+            style={{
+              opacity: revealed ? 1 : 0,
+              transitionDelay: '0.9s',
+            }}
+          >
             .dev
           </span>
         </div>
@@ -95,3 +129,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

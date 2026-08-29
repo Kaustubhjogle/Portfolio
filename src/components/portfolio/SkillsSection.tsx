@@ -1,10 +1,23 @@
-const SKILLS = [
-  { name: "UI Architecture", level: 95 },
-  { name: "API Design", level: 88 },
-  { name: "Performance Optimisation", level: 85 },
-  { name: "Database Modelling", level: 78 },
-  { name: "DevOps & CI/CD", level: 72 },
-  { name: "System Design", level: 80 },
+const DISCIPLINES = [
+  "UI Architecture",
+  "API Design",
+  "Performance Optimisation",
+  "System Design",
+  "Database Modelling",
+  "DevOps & CI/CD",
+];
+
+const STACK = [
+  "TypeScript",
+  "JavaScript",
+  "Java",
+  "React",
+  "Next.js",
+  "Tailwind CSS",
+  "Framer Motion",
+  "Vite",
+  "Spring Boot",
+  "REST APIs",
 ];
 
 const SOFT_SKILLS = [
@@ -16,64 +29,61 @@ const SOFT_SKILLS = [
   "Agile / Scrum",
 ];
 
-const SkillBar = ({ name, level }: { name: string; level: number }) => (
-  <div className="group">
-    <div className="flex justify-between items-baseline mb-2">
-      <span className="font-mono text-base text-ink">{name}</span>
-      <span className="font-mono text-xs text-dim">{level}%</span>
-    </div>
-    <div className="h-px bg-hairline w-full relative overflow-hidden">
-      <div
-        className="absolute top-0 left-0 h-full bg-ink transition-all duration-1000"
-        style={{ width: `${level}%` }}
-      />
-    </div>
-  </div>
-);
+import { useSectionReveal } from "@/hooks/useSectionReveal";
 
 const SkillsSection = () => {
+  const headerRef = useSectionReveal<HTMLDivElement>();
+
   return (
     <section id="skills" className="py-32 px-6 md:px-16 lg:px-24">
-      <div className="flex items-center gap-6 mb-20">
-        <span className="section-label">02 /</span>
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">SKILLS</h2>
+      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
+        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">SKILLS & STACK</h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-        {/* technical */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
+        {/* disciplines */}
         <div>
-          <p className="section-label mb-8">Technical Proficiency</p>
-          <div className="space-y-8">
-            {SKILLS.map((s) => (
-              <SkillBar key={s.name} {...s} />
+          <p className="section-label mb-6">Disciplines</p>
+          <div className="flex flex-wrap gap-2">
+            {DISCIPLINES.map((s) => (
+              <span
+                key={s}
+                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* tech stack */}
+        <div>
+          <p className="section-label mb-6">Tech Stack</p>
+          <div className="flex flex-wrap gap-2">
+            {STACK.map((s) => (
+              <span
+                key={s}
+                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
+              >
+                {s}
+              </span>
             ))}
           </div>
         </div>
 
         {/* soft skills */}
         <div>
-          <p className="section-label mb-8">Soft Skills & Practices</p>
-          <div className="flex flex-wrap gap-3">
+          <p className="section-label mb-6">Soft Skills</p>
+          <div className="flex flex-wrap gap-2">
             {SOFT_SKILLS.map((s) => (
-              <div
+              <span
                 key={s}
-                className="border border-hairline px-4 py-2 hover:border-ink hover:text-ink transition-colors duration-200"
+                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
               >
-                <span className="font-mono text-sm text-dim hover:text-ink transition-colors">{s}</span>
-              </div>
+                {s}
+              </span>
             ))}
           </div>
-
-          {/* big quote */}
-          <blockquote className="mt-16 border-l-2 border-ink pl-6">
-            <p className="serif-italic text-2xl text-ink leading-relaxed">
-              "Simplicity is the ultimate sophistication, in code, as in life."
-            </p>
-          </blockquote>
-
-          <p className="font-mono text-sm text-dim mt-8 leading-relaxed">
-            See these skills in action — <a href="#projects" className="text-ink hover-line">explore my projects →</a>
-          </p>
         </div>
       </div>
     </section>

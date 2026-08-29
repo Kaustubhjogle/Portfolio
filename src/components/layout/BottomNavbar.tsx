@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-const SECTIONS = ["Intro", "Experience", "Skills", "Tech", "Projects", "Education"];
+const SECTIONS = ["Intro", "Experience", "Skills", "Projects", "Education"];
 
 const BottomNavbar = () => {
     const [isVisible, setIsVisible] = useState(false);

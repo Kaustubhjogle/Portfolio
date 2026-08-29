@@ -1,12 +1,14 @@
 import { PROJECTS } from "@/utils/Projects";
 import { Github, ExternalLink } from "lucide-react";
+import { useSectionReveal } from "@/hooks/useSectionReveal";
 
 const ProjectSection = () => {
+  const headerRef = useSectionReveal<HTMLDivElement>();
+
   return (
     <section id="projects" className="py-32 px-6 md:px-16 lg:px-24">
       {/* section header */}
-      <div className="flex items-center gap-6 mb-20">
-        <span className="section-label">04 /</span>
+      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
         <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">PROJECTS</h2>
       </div>
 

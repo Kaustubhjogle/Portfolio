@@ -1,4 +1,5 @@
 import { Link } from "lucide-react";
+import { useSectionReveal } from "@/hooks/useSectionReveal";
 
 const EXPERIENCES = [
   {
@@ -13,11 +14,12 @@ const EXPERIENCES = [
 ];
 
 const ExperienceSection = () => {
+  const headerRef = useSectionReveal<HTMLDivElement>();
+
   return (
     <section id="experience" className="py-32 px-6 md:px-16 lg:px-24">
       {/* section header */}
-      <div className="flex items-center gap-6 mb-20">
-        <span className="section-label">01 /</span>
+      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
         <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">EXPERIENCE</h2>
       </div>
 
@@ -39,7 +41,7 @@ const ExperienceSection = () => {
                 <span className="section-label">@ {exp.company}</span>
               </div>
               <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-4">
-                {exp.description} <a href="#tech" className="text-ink hover-line">View my full tech stack →</a>
+                {exp.description} <a href="#skills" className="text-ink hover-line">View my full tech stack →</a>
               </p>
               <div className="flex flex-wrap gap-2">
                 {exp.tags.map((tag) => (
@@ -72,7 +74,7 @@ const ExperienceSection = () => {
             <div>
               <a href="https://www.linkedin.com/in/kaustubhjogle/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noopener noreferrer" className="flex flex-row ">
                 <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-2 mr-2">
-                  Recommendations from past teammates LinkedIn
+                  Recommendations from past teammates on LinkedIn
                 </p>
                 <Link className="w-4 h-4 my-1" />
               </a>

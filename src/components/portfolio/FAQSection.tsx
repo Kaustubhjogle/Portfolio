@@ -1,31 +1,33 @@
 const FAQS = [
   {
-    question: "What technologies does Kaustubh work with?",
+    question: "What technologies do I work with?",
     answer:
-      "Kaustubh works primarily with TypeScript, JavaScript, and Java. On the frontend, he uses React, Next.js, Tailwind CSS, Framer Motion, and Vite. On the backend, he works with Java, Spring Boot, and REST APIs. He has strong skills in UI Architecture, API Design, Performance Optimisation, System Design, Database Modelling, and DevOps/CI/CD.",
+      "I work primarily with TypeScript, JavaScript, and Java. On the frontend, I use React, Next.js, Tailwind CSS, Framer Motion, and Vite. On the backend, I work with Java, Spring Boot, and REST APIs. My strongest areas are UI Architecture, API Design, Performance Optimisation, System Design, Database Modelling, and DevOps/CI/CD.",
   },
   {
-    question: "What is Kaustubh's professional experience?",
+    question: "What's my professional experience?",
     answer:
-      "Kaustubh is currently a Software Engineer at IIFL Finance in Mumbai, India, where he has been working since 2023. He designs and develops scalable, user-friendly interfaces and has migrated 8+ legacy modules to a modern React-based stack for IIFL's digital lending platform, which powers 5,000 Cr+ AUM and 300 Cr+ monthly disbursals.",
+      "I'm currently a Software Engineer at IIFL Finance in Mumbai, where I've been since 2023. I design and develop scalable, user-friendly interfaces and have migrated 8+ legacy modules to a modern React-based stack for IIFL's digital lending platform, which powers 5,000 Cr+ AUM and 300 Cr+ monthly disbursals.",
   },
   {
-    question: "What projects has Kaustubh built?",
+    question: "What have I built?",
     answer:
-      "Kaustubh has built WhatTheCron, a full-stack two-way cron expression translator with AI-powered natural language input using the Gemini API, and PromptPane, a Chrome extension that adds a navigable prompt index to AI chat interfaces like ChatGPT, Gemini, and Claude. PromptPane is available on the Chrome Web Store.",
+      "I built WhatTheCron, a full-stack two-way cron expression translator with AI-powered natural language input using the Gemini API, and PromptPane, a Chrome extension that adds a navigable prompt index to AI chat interfaces like ChatGPT, Gemini, and Claude. PromptPane is live on the Chrome Web Store.",
   },
-  // {
-  //   question: "Is Kaustubh available for hire?",
-  //   answer:
-  //     "Kaustubh is currently available for full-time software engineering roles. You can reach him via email at kaustubhrjogle@gmail.com, connect on LinkedIn, or view his work on GitHub.",
-  // },
+  {
+    question: "Am I available for hire?",
+    answer:
+      "Yes — I'm currently available for full-time software engineering roles. You can reach me via email, connect on LinkedIn, or check out my work on GitHub. Links are at the top and bottom of this page.",
+  },
 ];
+import { useSectionReveal } from "@/hooks/useSectionReveal";
 
 const FAQSection = () => {
+  const headerRef = useSectionReveal<HTMLDivElement>();
+
   return (
     <section id="faq" className="py-32 px-6 md:px-16 lg:px-24">
-      <div className="flex items-center gap-6 mb-20">
-        <span className="section-label">06 /</span>
+      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
         <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">FAQ</h2>
       </div>
 
