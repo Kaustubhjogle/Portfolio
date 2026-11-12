@@ -19,8 +19,11 @@
   font-display: swap;
 }
 
+:root { color-scheme: light dark; }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
 .portfolio-v2 {
-  color-scheme: light dark;
   --portfolio-paper: light-dark(#fff, #0b0b0d);
   --portfolio-ink: light-dark(#18181b, #f4f4f5);
   --portfolio-muted: light-dark(#52525b, #a1a1aa);
@@ -134,6 +137,55 @@
   font-weight: 500;
 }
 
+.portfolio-theme-toggle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  transition: scale 150ms ease-out;
+}
+
+.portfolio-theme-toggle:active { scale: 0.96; }
+.portfolio-theme-toggle .portfolio-theme-moon,
+:root[data-theme="dark"] .portfolio-theme-toggle .portfolio-theme-sun { display: none; }
+:root[data-theme="dark"] .portfolio-theme-toggle .portfolio-theme-moon { display: block; }
+.portfolio-header .portfolio-theme-toggle svg { width: 18px; height: 18px; }
+
+@media (hover: hover) {
+  .portfolio-theme-toggle:hover { background: var(--portfolio-hover); }
+}
+
+@media (max-width: 380px) {
+  .portfolio-header-inner { gap: 4px; padding-inline: 8px; }
+  .portfolio-wordmark { min-width: 32px; }
+  .portfolio-header nav { gap: 0 4px; }
+  .portfolio-header nav a { font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-new(root) {
+    animation: portfolio-theme-wipe 650ms cubic-bezier(0.85, 0, 0.15, 1) both;
+    mix-blend-mode: normal;
+  }
+
+  @keyframes portfolio-theme-wipe {
+    from { clip-path: inset(0 0 100%); }
+    to { clip-path: inset(0); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-theme-toggle { transition: none; }
+  .portfolio-theme-toggle:active { scale: none; }
+}
+
 .portfolio-v2 svg { flex: none; stroke-width: 1.65; }
 
 .portfolio-header svg,
@@ -234,6 +286,12 @@
   width: 19px;
   height: 19px;
   mask-image: url("/icons/x.svg");
+}
+
+.portfolio-dev-icon {
+  width: 20px;
+  height: 20px;
+  mask-image: url("/icons/devdotto.svg");
 }
 
 .portfolio-panel {
@@ -508,6 +566,18 @@
 }
 
 .portfolio-project-links svg { width: 14px; height: 14px; }
+
+.portfolio-project.portfolio-blog-text-only { grid-template-columns: minmax(0, 1fr); }
+.portfolio-blog-cover { aspect-ratio: 1000 / 420; }
+.portfolio-blog-cover img { object-fit: cover; }
+.portfolio-blog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  font-size: 12px;
+}
+.portfolio-blog-meta > span { padding-inline-start: 10px; border-inline-start: 1px solid var(--portfolio-rule); }
 .portfolio-project-toggle { display: flex; justify-content: center; padding: 0 var(--portfolio-inset) 16px; }
 .portfolio-project-toggle button {
   min-height: 44px;
@@ -656,6 +726,11 @@ a.portfolio-stack-chip {
   border-block: 1px solid var(--portfolio-rule);
   color: var(--portfolio-muted);
   font-size: 13px;
+}
+
+.portfolio-footer-credit {
+  font-size: 0.6rem;
+  color: color-mix(in srgb, var(--portfolio-muted) 90%, var(--portfolio-paper));
 }
 
 @media (min-width: 980px) {

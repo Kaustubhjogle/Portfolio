@@ -14,6 +14,7 @@ const socialIcons = {
   X: <span className="portfolio-brand-icon portfolio-x-icon" aria-hidden="true" />,
   GitHub: <Github aria-hidden="true" />,
   LinkedIn: <Linkedin aria-hidden="true" />,
+  "DEV Community": <span className="portfolio-brand-icon portfolio-dev-icon" aria-hidden="true" />,
 };
 
 function getGreeting(hour: number) {
