@@ -228,33 +228,48 @@
 .portfolio-v2 h3 { font-size: 17px; }
 .portfolio-v2 h4 { font-size: 15px; }
 
-.portfolio-record {
+.portfolio-experience-company {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
   gap: 12px;
+  margin-bottom: 14px;
 }
 
-.portfolio-record-icon { width: 36px; height: 36px; }
-.portfolio-record-icon svg { width: 19px; height: 19px; }
-
-.portfolio-role {
-  display: grid;
-  gap: 3px;
-  margin-top: 12px;
-  padding-inline-start: 12px;
-  border-inline-start: 1px solid var(--portfolio-rule);
+.portfolio-experience-company-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 3px 12px;
 }
 
-.portfolio-meta {
-  display: inline-flex;
+.portfolio-experience-company-details h3 { font-size: 20px; }
+
+.portfolio-experience-location {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 5px;
+  gap: 2px 6px;
   color: var(--portfolio-muted);
-  font: 400 12px/1.5 var(--portfolio-mono);
-  font-variant-numeric: tabular-nums;
+  font-size: 13px;
 }
 
-.portfolio-meta svg { width: 13px; height: 13px; }
+.portfolio-current-employer {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: light-dark(#2563eb, #60a5fa);
+}
+
+.portfolio-experience-company img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: grayscale(1);
+  transition: filter 150ms ease-out;
+}
+
 .portfolio-muted { color: var(--portfolio-muted); }
 
 .portfolio-highlights {
@@ -282,16 +297,14 @@
   font: 400 12px/1.45 var(--portfolio-mono);
 }
 
-.portfolio-education {
+.portfolio-entry {
   position: relative;
-  --education-icon-size: 26px;
-  --education-indent: 38px;
 }
 
-.portfolio-education::before {
+.portfolio-entry::before {
   position: absolute;
-  inset-block: 25px 19px;
-  inset-inline-start: calc(var(--portfolio-inset) + var(--education-icon-size) / 2);
+  inset-block: 10px 4px;
+  inset-inline-start: calc(13px + var(--portfolio-entry-inset, 0px));
   width: 12px;
   border-inline-start: 1px solid var(--portfolio-rule);
   border-block-end: 1px solid var(--portfolio-rule);
@@ -300,7 +313,10 @@
   content: "";
 }
 
-.portfolio-education-summary {
+.portfolio-education { --portfolio-entry-inset: var(--portfolio-inset); }
+.portfolio-education::before { inset-block: 25px 19px; }
+
+.portfolio-entry-summary {
   position: relative;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -312,18 +328,18 @@
   list-style: none;
 }
 
-.portfolio-education-summary::-webkit-details-marker { display: none; }
+.portfolio-entry-summary::-webkit-details-marker { display: none; }
 
-.portfolio-education-icon {
-  width: var(--education-icon-size);
-  height: var(--education-icon-size);
+.portfolio-entry-icon {
+  width: 26px;
+  height: 26px;
   border-radius: 6px;
 }
 
-.portfolio-education-heading { display: grid; gap: 3px; }
-.portfolio-education-title { font-weight: 600; letter-spacing: -0.025em; text-wrap: balance; }
+.portfolio-entry-heading { display: grid; gap: 3px; }
+.portfolio-entry-title { font-weight: 600; letter-spacing: -0.025em; text-wrap: balance; }
 
-.portfolio-education-meta {
+.portfolio-entry-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 2px 8px;
@@ -333,27 +349,27 @@
   font-variant-numeric: tabular-nums;
 }
 
-.portfolio-education-meta > span + span {
+.portfolio-entry-meta > span + span {
   padding-inline-start: 8px;
   border-inline-start: 1px solid var(--portfolio-rule);
 }
 
-.portfolio-education-placeholder { font-style: italic; }
+.portfolio-entry-placeholder { font-style: italic; }
 
-.portfolio-education-chevron {
+.portfolio-entry-chevron {
   width: 16px;
   height: 16px;
   margin-top: 4px;
   color: var(--portfolio-muted);
 }
 
-.portfolio-education-details,
-.portfolio-education-skills { margin-inline-start: var(--education-indent); }
+.portfolio-entry-details,
+.portfolio-entry-tags { margin-inline-start: 38px; }
 
-.portfolio-education-details { padding-top: 6px; }
-.portfolio-education-details a { font-size: 13px; }
-.portfolio-education-skills { margin-top: 9px; }
-.portfolio-education-placeholder-tags li,
+.portfolio-entry-details { padding-top: 6px; }
+.portfolio-entry-details a { font-size: 13px; }
+.portfolio-entry-tags { margin-top: 9px; }
+.portfolio-entry-placeholder-tags li,
 .portfolio-project-tag-placeholders li { border-style: dashed; }
 
 .portfolio-link {
@@ -462,18 +478,18 @@
     box-shadow 150ms ease-out, scale 120ms ease-out;
 }
 
-.portfolio-v2 :is(.portfolio-education-summary, .portfolio-faq summary, .portfolio-project, .portfolio-icon) {
+.portfolio-v2 :is(.portfolio-entry-summary, .portfolio-faq summary, .portfolio-project, .portfolio-icon) {
   transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
 }
 
 .portfolio-v2 :is(.portfolio-social, .portfolio-project-links a):active { scale: 0.96; }
 
-.portfolio-v2 :is(.portfolio-education-summary, .portfolio-faq summary, .portfolio-social, .portfolio-project-links a):focus-visible {
+.portfolio-v2 :is(.portfolio-entry-summary, .portfolio-faq summary, .portfolio-social, .portfolio-project-links a):focus-visible {
   background-color: var(--portfolio-hover);
 }
 
 @media (hover: hover) {
-  .portfolio-v2 :is(.portfolio-header nav a, .portfolio-link, .portfolio-contact a, #education-heading a):hover {
+  .portfolio-v2 :is(.portfolio-header nav a, .portfolio-link, .portfolio-contact a, .portfolio-panel > h2 a):hover {
     text-decoration: underline;
     text-decoration-color: currentColor;
   }
@@ -484,7 +500,7 @@
     box-shadow: 0 0 0 1px var(--portfolio-shadow-ring), 0 2px 5px var(--portfolio-shadow-lift);
   }
 
-  .portfolio-v2 :is(.portfolio-education-summary, .portfolio-faq summary):hover {
+  .portfolio-v2 :is(.portfolio-entry-summary, .portfolio-faq summary):hover {
     background-color: var(--portfolio-hover);
   }
 
@@ -493,13 +509,15 @@
     background-color: var(--portfolio-wash);
   }
 
-  :is(.portfolio-record:hover .portfolio-record-icon,
-    .portfolio-education-summary:hover .portfolio-education-icon,
+  :is(.portfolio-experience-company:hover .portfolio-entry-icon,
+    .portfolio-entry-summary:hover .portfolio-entry-icon,
     .portfolio-contact-row:has(a):hover .portfolio-icon) {
     border-color: var(--portfolio-hover-ring);
     background-color: var(--portfolio-hover);
     color: var(--portfolio-ink);
   }
+
+  .portfolio-experience:hover .portfolio-experience-company img { filter: none; }
 }
 
 .portfolio-footer {
@@ -549,7 +567,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   html:has(.portfolio-v2) { scroll-behavior: auto; }
-  .portfolio-v2 :is(.portfolio-social, .portfolio-project-links a, .portfolio-education-summary,
-    .portfolio-faq summary, .portfolio-project, .portfolio-icon) { transition: none; }
+  .portfolio-v2 :is(.portfolio-social, .portfolio-project-links a, .portfolio-entry-summary,
+    .portfolio-faq summary, .portfolio-project, .portfolio-icon, .portfolio-experience-company img) { transition: none; }
   .portfolio-v2 :is(.portfolio-social, .portfolio-project-links a):active { scale: none; }
 }

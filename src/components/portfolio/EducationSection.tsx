@@ -45,26 +45,26 @@ export default function EducationSection() {
 
         return (
           <article key={school.id} id={`education-${school.id}`} aria-labelledby={titleId}
-            className="portfolio-body portfolio-education">
+            className="portfolio-body portfolio-entry portfolio-education">
             <details>
-              <summary className="portfolio-education-summary">
-                <span className="portfolio-icon portfolio-education-icon">
+              <summary className="portfolio-entry-summary">
+                <span className="portfolio-icon portfolio-entry-icon">
                   <GraduationCap aria-hidden="true" />
                 </span>
-                <span className="portfolio-education-heading">
-                  <span id={titleId} className="portfolio-education-title">{school.institution}</span>
-                  <span className="portfolio-education-meta">
+                <span className="portfolio-entry-heading">
+                  <span id={titleId} className="portfolio-entry-title">{school.institution}</span>
+                  <span className="portfolio-entry-meta">
                     <span><span className="sr-only">Study period: </span>{school.period}</span>
                     <span><span className="sr-only">Degree: </span>{school.degree}</span>
-                    <span className={school.fieldOfStudy ? undefined : "portfolio-education-placeholder"}>
+                    <span className={school.fieldOfStudy ? undefined : "portfolio-entry-placeholder"}>
                       {school.fieldOfStudy && <span className="sr-only">Field of study: </span>}
                       {school.fieldOfStudy ?? "Field of study TBD"}
                     </span>
                   </span>
                 </span>
-                <ChevronsUpDown className="portfolio-education-chevron" aria-hidden="true" />
+                <ChevronsUpDown className="portfolio-entry-chevron" aria-hidden="true" />
               </summary>
-              <div className="portfolio-education-details">
+              <div className="portfolio-entry-details">
                 <ul className="portfolio-highlights">
                   {school.details.map((detail) => <li key={detail}>{detail}</li>)}
                 </ul>
@@ -75,7 +75,7 @@ export default function EducationSection() {
                 )}
               </div>
             </details>
-            <ul className={`portfolio-tags portfolio-education-skills${hasSkills ? "" : " portfolio-education-placeholder-tags"}`}
+            <ul className={`portfolio-tags portfolio-entry-tags${hasSkills ? "" : " portfolio-entry-placeholder-tags"}`}
               aria-label={hasSkills ? "Skills" : "Skill placeholders"}>
               {(hasSkills ? school.skills : SKILL_PLACEHOLDERS).map((skill) => <li key={skill}>{skill}</li>)}
             </ul>
