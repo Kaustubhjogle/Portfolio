@@ -33,7 +33,7 @@ const EDUCATION = [
   },
 ];
 
-const SKILL_PLACEHOLDERS = ["Skill 1", "Skill 2", "Skill 3"];
+// const SKILL_PLACEHOLDERS = ["Skill 1", "Skill 2", "Skill 3"];
 
 export default function EducationSection() {
   return (
@@ -41,7 +41,7 @@ export default function EducationSection() {
       <h2 id="education-heading"><a href="#education">Education</a></h2>
       {EDUCATION.map((school) => {
         const titleId = `education-${school.id}-title`;
-        const hasSkills = school.skills.length > 0;
+        // const hasSkills = school.skills.length > 0;
 
         return (
           <article key={school.id} id={`education-${school.id}`} aria-labelledby={titleId}
@@ -70,15 +70,15 @@ export default function EducationSection() {
                 </ul>
                 {school.institutionUrl && (
                   <a className="portfolio-link" href={school.institutionUrl} target="_blank" rel="noopener noreferrer">
-                    School website <ArrowUpRight aria-hidden="true" />
+                    Website <ArrowUpRight aria-hidden="true" />
                   </a>
                 )}
               </div>
             </details>
-            <ul className={`portfolio-tags portfolio-entry-tags${hasSkills ? "" : " portfolio-entry-placeholder-tags"}`}
+            {/* <ul className={`portfolio-tags portfolio-entry-tags${hasSkills ? "" : " portfolio-entry-placeholder-tags"}`}
               aria-label={hasSkills ? "Skills" : "Skill placeholders"}>
               {(hasSkills ? school.skills : SKILL_PLACEHOLDERS).map((skill) => <li key={skill}>{skill}</li>)}
-            </ul>
+            </ul> */}
           </article>
         );
       })}

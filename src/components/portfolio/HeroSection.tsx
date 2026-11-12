@@ -10,7 +10,11 @@ const mumbaiTime = new Intl.DateTimeFormat("en-IN", {
   hour12: true,
 });
 
-const socialIcons = { GitHub: Github, LinkedIn: Linkedin };
+const socialIcons = {
+  X: <span className="portfolio-brand-icon portfolio-x-icon" aria-hidden="true" />,
+  GitHub: <Github aria-hidden="true" />,
+  LinkedIn: <Linkedin aria-hidden="true" />,
+};
 
 function getGreeting(hour: number) {
   if (hour < 12) return "Good morning";
@@ -70,11 +74,11 @@ export default function HeroSection() {
             </svg>
           </span>
           {HYPERLINKS.filter(({ name }) => name in socialIcons).map((link) => {
-            const Icon = socialIcons[link.name as keyof typeof socialIcons];
+            const icon = socialIcons[link.name as keyof typeof socialIcons];
             return (
               <a key={link.name} className="portfolio-icon portfolio-social" href={link.url}
                 target={link.target} rel="noopener noreferrer" aria-label={link.name}>
-                <Icon aria-hidden="true" />
+                {icon}
               </a>
             );
           })}
