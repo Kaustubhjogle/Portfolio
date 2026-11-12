@@ -1,4 +1,4 @@
-import { ArrowDownRight, Clock3, CodeXml, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Clock3, CodeXml, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { HYPERLINKS } from "@/utils/Links";
 import { EXPERIENCE } from "@/utils/Experience";
@@ -61,7 +61,14 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="portfolio-follow" aria-label="Follow me">
-          <span className="portfolio-follow-note" aria-hidden="true">follow me <ArrowDownRight /></span>
+          <span className="portfolio-follow-note" aria-hidden="true">
+            <span>follow me</span>
+            <ArrowRight className="portfolio-follow-arrow-inline" />
+            <svg className="portfolio-follow-arrow-gutter" viewBox="0 0 48 42" fill="none"
+              stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 3C7 23 17 34 44 32m-8-6 8 6-7 7" />
+            </svg>
+          </span>
           {HYPERLINKS.filter(({ name }) => name in socialIcons).map((link) => {
             const Icon = socialIcons[link.name as keyof typeof socialIcons];
             return (

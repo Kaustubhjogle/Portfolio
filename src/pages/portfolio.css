@@ -181,15 +181,15 @@
 .portfolio-follow-note {
   display: inline-flex;
   align-items: center;
-  gap: 3px;
-  margin-inline-end: 8px;
+  gap: 6px;
   color: var(--portfolio-muted);
   font: 500 22px/1 Caveat, cursive;
   white-space: nowrap;
-  rotate: -5deg;
 }
 
-.portfolio-follow-note svg { width: 18px; height: 18px; }
+.portfolio-follow-note > span { rotate: -5deg; }
+.portfolio-follow-arrow-inline { width: 18px; height: 18px; }
+.portfolio-follow-arrow-gutter { display: none; }
 .portfolio-social { width: 44px; height: 44px; border-radius: 10px; color: var(--portfolio-ink); }
 .portfolio-social svg { width: 20px; height: 20px; }
 
@@ -408,8 +408,18 @@
   .portfolio-follow-note {
     position: absolute;
     inset-block-start: -16px;
-    inset-inline-end: 100%;
-    margin-inline-end: 12px;
+    inset-inline-end: calc(100% + 12px);
+  }
+
+  .portfolio-follow-arrow-inline { display: none; }
+
+  .portfolio-follow-arrow-gutter {
+    position: absolute;
+    display: block;
+    inset-block-start: 18px;
+    inset-inline-start: calc(100% - 8px);
+    width: 44px;
+    height: 44px;
   }
 }
 
