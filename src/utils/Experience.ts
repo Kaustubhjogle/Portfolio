@@ -1,8 +1,22 @@
-export const EXPERIENCE = {
+interface Experience {
+  company: string;
+  role: string;
+  companyUrl?: string | null;
+  companyLogo?: string | null;
+  location?: string | null;
+  workArrangement?: string | null;
+  isCurrent?: boolean | null;
+  employmentType?: string | null;
+  period?: string | null;
+  duration?: string | null;
+  highlights: string[];
+  technologies: string[];
+}
+
+export const EXPERIENCE: Experience = {
   period: "2023 – Present",
   role: "Software Engineer",
   company: "IIFL Finance",
-  companyUrl: "https://www.iifl.com",
   companyLogo: "",
   location: "Mumbai, India",
   workArrangement: "",

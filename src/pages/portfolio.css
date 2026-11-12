@@ -390,8 +390,6 @@
   border-inline-start: 1px solid var(--portfolio-rule);
 }
 
-.portfolio-entry-placeholder { font-style: italic; }
-
 .portfolio-entry-chevron {
   width: 16px;
   height: 16px;

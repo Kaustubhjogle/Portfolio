@@ -1,7 +1,13 @@
 import { ArrowUpRight, BriefcaseBusiness, Building2, ChevronsUpDown } from "lucide-react";
 import { EXPERIENCE, RECOMMENDATIONS_URL } from "@/utils/Experience";
+import EntryMetadata from "./EntryMetadata";
 
 export default function ExperienceSection() {
+  const companyUrl = EXPERIENCE.companyUrl?.trim();
+  const companyLogo = EXPERIENCE.companyLogo?.trim();
+  const location = EXPERIENCE.location?.trim();
+  const workArrangement = EXPERIENCE.workArrangement?.trim();
+
   return (
     <>
       <section id="experience" className="portfolio-panel" aria-labelledby="experience-heading">
@@ -9,46 +15,42 @@ export default function ExperienceSection() {
         <article className="portfolio-body portfolio-experience" aria-labelledby="experience-company">
           <header className="portfolio-experience-company">
             <span className="portfolio-icon portfolio-entry-icon">
-              {EXPERIENCE.companyLogo ? (
-                <img src={EXPERIENCE.companyLogo} alt="" loading="lazy" />
+              {companyLogo ? (
+                <img src={companyLogo} alt="" loading="lazy" />
               ) : <Building2 aria-hidden="true" />}
             </span>
             <div className="portfolio-experience-company-details">
               <h3 id="experience-company">
-                <a className="portfolio-link" href={EXPERIENCE.companyUrl} target="_blank" rel="noopener noreferrer">
-                  {EXPERIENCE.company}
-                </a>
+                {companyUrl ? (
+                  <a className="portfolio-link" href={companyUrl} target="_blank" rel="noopener noreferrer">
+                    {EXPERIENCE.company}
+                  </a>
+                ) : EXPERIENCE.company}
               </h3>
-              <p className="portfolio-experience-location">
-                <span>{EXPERIENCE.location}</span>
-                <span className={EXPERIENCE.workArrangement ? undefined : "portfolio-entry-placeholder"}>
-                  ({EXPERIENCE.workArrangement || "Work arrangement TBD"})
-                </span>
-                {EXPERIENCE.isCurrent && (
-                  <span className="portfolio-current-employer"><span className="sr-only">Current employer</span></span>
-                )}
-              </p>
+              {(location || workArrangement || EXPERIENCE.isCurrent) && (
+                <p className="portfolio-experience-location">
+                  {location && <span>{location}</span>}
+                  {workArrangement && <span>{location ? `(${workArrangement})` : workArrangement}</span>}
+                  {EXPERIENCE.isCurrent && (
+                    <span className="portfolio-current-employer"><span className="sr-only">Current employer</span></span>
+                  )}
+                </p>
+              )}
             </div>
           </header>
           <div className="portfolio-entry">
-            <details>
+            <details open>
               <summary className="portfolio-entry-summary">
                 <span className="portfolio-icon portfolio-entry-icon"><BriefcaseBusiness aria-hidden="true" /></span>
                 <span className="portfolio-entry-heading">
                   <span className="portfolio-entry-title">{EXPERIENCE.role}</span>
-                  <span className="portfolio-entry-meta">
-                    <span className={EXPERIENCE.employmentType ? undefined : "portfolio-entry-placeholder"}>
-                      {EXPERIENCE.employmentType && <span className="sr-only">Employment type: </span>}
-                      {EXPERIENCE.employmentType || "Employment type TBD"}
-                    </span>
-                    <span><span className="sr-only">Employment period: </span>{EXPERIENCE.period}</span>
-                    <span className={EXPERIENCE.duration ? undefined : "portfolio-entry-placeholder"}>
-                      {EXPERIENCE.duration && <span className="sr-only">Duration: </span>}
-                      {EXPERIENCE.duration || "Duration TBD"}
-                    </span>
-                  </span>
+                  <EntryMetadata fields={[
+                    { label: "Employment type", value: EXPERIENCE.employmentType },
+                    { label: "Employment period", value: EXPERIENCE.period },
+                    { label: "Duration", value: EXPERIENCE.duration },
+                  ]} />
                 </span>
-                <ChevronsUpDown className="portfolio-entry-chevron" aria-hidden="true" />
+                <ChevronsUpDown className="portfolio-entry-chevron" aria-hidden="true"/>
               </summary>
               <div className="portfolio-entry-details">
                 <ul className="portfolio-highlights">

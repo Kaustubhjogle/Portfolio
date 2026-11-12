@@ -1,6 +1,18 @@
 import { ArrowUpRight, ChevronsUpDown, GraduationCap } from "lucide-react";
+import EntryMetadata from "./EntryMetadata";
 
-const EDUCATION = [
+interface Education {
+  id: string;
+  institution: string;
+  institutionUrl?: string | null;
+  period?: string | null;
+  degree?: string | null;
+  fieldOfStudy?: string | null;
+  details: string[];
+  skills: string[];
+}
+
+const EDUCATION: Education[] = [
   {
     id: "tsec",
     institution: "Thadomal Shahani Engineering College",
@@ -41,6 +53,7 @@ export default function EducationSection() {
       <h2 id="education-heading"><a href="#education">Education</a></h2>
       {EDUCATION.map((school) => {
         const titleId = `education-${school.id}-title`;
+        const institutionUrl = school.institutionUrl?.trim();
         // const hasSkills = school.skills.length > 0;
 
         return (
@@ -53,14 +66,11 @@ export default function EducationSection() {
                 </span>
                 <span className="portfolio-entry-heading">
                   <span id={titleId} className="portfolio-entry-title">{school.institution}</span>
-                  <span className="portfolio-entry-meta">
-                    <span><span className="sr-only">Study period: </span>{school.period}</span>
-                    <span><span className="sr-only">Degree: </span>{school.degree}</span>
-                    <span className={school.fieldOfStudy ? undefined : "portfolio-entry-placeholder"}>
-                      {school.fieldOfStudy && <span className="sr-only">Field of study: </span>}
-                      {school.fieldOfStudy ?? "Field of study TBD"}
-                    </span>
-                  </span>
+                  <EntryMetadata fields={[
+                    { label: "Study period", value: school.period },
+                    { label: "Degree", value: school.degree },
+                    { label: "Field of study", value: school.fieldOfStudy },
+                  ]} />
                 </span>
                 <ChevronsUpDown className="portfolio-entry-chevron" aria-hidden="true" />
               </summary>
@@ -68,8 +78,8 @@ export default function EducationSection() {
                 <ul className="portfolio-highlights">
                   {school.details.map((detail) => <li key={detail}>{detail}</li>)}
                 </ul>
-                {school.institutionUrl && (
-                  <a className="portfolio-link" href={school.institutionUrl} target="_blank" rel="noopener noreferrer">
+                {institutionUrl && (
+                  <a className="portfolio-link" href={institutionUrl} target="_blank" rel="noopener noreferrer">
                     Website <ArrowUpRight aria-hidden="true" />
                   </a>
                 )}

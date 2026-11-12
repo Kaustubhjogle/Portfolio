@@ -23,6 +23,7 @@ function getGreeting(hour: number) {
 }
 
 export default function HeroSection() {
+  const location = EXPERIENCE.location?.trim();
   const [minute, setMinute] = useState(() => Math.floor(Date.now() / 60_000));
   const now = new Date(minute * 60_000);
   const email = HYPERLINKS.find((link) => link.name === "Email");
@@ -46,10 +47,12 @@ export default function HeroSection() {
               <span className="portfolio-icon"><CodeXml aria-hidden="true" /></span>
               <span>{EXPERIENCE.role} @ {EXPERIENCE.company}</span>
             </div>
-            <div className="portfolio-contact-row">
-              <span className="portfolio-icon"><MapPin aria-hidden="true" /></span>
-              <span>{EXPERIENCE.location}</span>
-            </div>
+            {location && (
+              <div className="portfolio-contact-row">
+                <span className="portfolio-icon"><MapPin aria-hidden="true" /></span>
+                <span>{location}</span>
+              </div>
+            )}
             {email && (
               <div className="portfolio-contact-row">
                 <span className="portfolio-icon"><Mail aria-hidden="true" /></span>
