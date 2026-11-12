@@ -28,6 +28,9 @@
   --portfolio-wash: light-dark(#fafafa, #131315);
   --portfolio-hover: light-dark(#f4f4f5, #202024);
   --portfolio-focus: light-dark(#3f3f46, #d4d4d8);
+  --portfolio-hover-ring: light-dark(#d4d4d8, #45454c);
+  --portfolio-shadow-ring: light-dark(transparent, rgb(255 255 255 / 8%));
+  --portfolio-shadow-lift: light-dark(rgb(0 0 0 / 9%), transparent);
   --portfolio-mono: "Geist Mono", ui-monospace, monospace;
   --portfolio-inset: clamp(16px, 4vw, 28px);
   min-height: 100vh;
@@ -102,10 +105,6 @@
   min-height: 44px;
   font-size: 13px;
   font-weight: 500;
-}
-
-.portfolio-v2 :is(.portfolio-header nav a, .portfolio-link, .portfolio-contact a):hover {
-  text-decoration: underline;
 }
 
 .portfolio-v2 svg { flex: none; stroke-width: 1.65; }
@@ -192,14 +191,6 @@
 .portfolio-follow-arrow-gutter { display: none; }
 .portfolio-social { width: 44px; height: 44px; border-radius: 10px; color: var(--portfolio-ink); }
 .portfolio-social svg { width: 20px; height: 20px; }
-
-.portfolio-social {
-  transition: background-color 120ms ease-out, scale 120ms ease-out;
-}
-
-.portfolio-social:hover { background: var(--portfolio-hover); }
-
-.portfolio-social:active { scale: 0.96; }
 
 .portfolio-panel {
   border-top: 1px solid var(--portfolio-rule);
@@ -291,6 +282,80 @@
   font: 400 12px/1.45 var(--portfolio-mono);
 }
 
+.portfolio-education {
+  position: relative;
+  --education-icon-size: 26px;
+  --education-indent: 38px;
+}
+
+.portfolio-education::before {
+  position: absolute;
+  inset-block: 25px 19px;
+  inset-inline-start: calc(var(--portfolio-inset) + var(--education-icon-size) / 2);
+  width: 12px;
+  border-inline-start: 1px solid var(--portfolio-rule);
+  border-block-end: 1px solid var(--portfolio-rule);
+  border-end-start-radius: 4px;
+  pointer-events: none;
+  content: "";
+}
+
+.portfolio-education-summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  min-height: 44px;
+  border-radius: 6px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.portfolio-education-summary::-webkit-details-marker { display: none; }
+
+.portfolio-education-icon {
+  width: var(--education-icon-size);
+  height: var(--education-icon-size);
+  border-radius: 6px;
+}
+
+.portfolio-education-heading { display: grid; gap: 3px; }
+.portfolio-education-title { font-weight: 600; letter-spacing: -0.025em; text-wrap: balance; }
+
+.portfolio-education-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  color: var(--portfolio-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.portfolio-education-meta > span + span {
+  padding-inline-start: 8px;
+  border-inline-start: 1px solid var(--portfolio-rule);
+}
+
+.portfolio-education-placeholder { font-style: italic; }
+
+.portfolio-education-chevron {
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  color: var(--portfolio-muted);
+}
+
+.portfolio-education-details,
+.portfolio-education-skills { margin-inline-start: var(--education-indent); }
+
+.portfolio-education-details { padding-top: 6px; }
+.portfolio-education-details a { font-size: 13px; }
+.portfolio-education-skills { margin-top: 9px; }
+.portfolio-education-placeholder-tags li,
+.portfolio-project-tag-placeholders li { border-style: dashed; }
+
 .portfolio-link {
   display: inline;
   text-decoration: underline;
@@ -364,9 +429,7 @@
   font-weight: 500;
 }
 
-.portfolio-project-links a:hover { background: var(--portfolio-hover); }
 .portfolio-project-links svg { width: 14px; height: 14px; }
-.portfolio-project-tag-placeholders li { border-style: dashed; }
 .portfolio-count { margin-inline-start: 3px; font: 400 13px/1 var(--portfolio-mono); color: var(--portfolio-muted); }
 .portfolio-stack h3 { font-size: 15px; }
 
@@ -391,6 +454,53 @@
 .portfolio-faq summary svg { width: 15px; height: 15px; color: var(--portfolio-muted); }
 .portfolio-faq[open] summary svg { rotate: 180deg; }
 .portfolio-faq p { max-width: 65ch; padding-bottom: 12px; }
+
+.portfolio-faq summary { border-radius: 6px; }
+
+.portfolio-v2 :is(.portfolio-social, .portfolio-project-links a) {
+  transition: background-color 150ms ease-out, border-color 150ms ease-out,
+    box-shadow 150ms ease-out, scale 120ms ease-out;
+}
+
+.portfolio-v2 :is(.portfolio-education-summary, .portfolio-faq summary, .portfolio-project, .portfolio-icon) {
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.portfolio-v2 :is(.portfolio-social, .portfolio-project-links a):active { scale: 0.96; }
+
+.portfolio-v2 :is(.portfolio-education-summary, .portfolio-faq summary, .portfolio-social, .portfolio-project-links a):focus-visible {
+  background-color: var(--portfolio-hover);
+}
+
+@media (hover: hover) {
+  .portfolio-v2 :is(.portfolio-header nav a, .portfolio-link, .portfolio-contact a, #education-heading a):hover {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+  }
+
+  .portfolio-v2 :is(.portfolio-social, .portfolio-project-links a):hover {
+    border-color: var(--portfolio-hover-ring);
+    background-color: var(--portfolio-hover);
+    box-shadow: 0 0 0 1px var(--portfolio-shadow-ring), 0 2px 5px var(--portfolio-shadow-lift);
+  }
+
+  .portfolio-v2 :is(.portfolio-education-summary, .portfolio-faq summary):hover {
+    background-color: var(--portfolio-hover);
+  }
+
+  .portfolio-project:hover {
+    border-color: var(--portfolio-hover-ring);
+    background-color: var(--portfolio-wash);
+  }
+
+  :is(.portfolio-record:hover .portfolio-record-icon,
+    .portfolio-education-summary:hover .portfolio-education-icon,
+    .portfolio-contact-row:has(a):hover .portfolio-icon) {
+    border-color: var(--portfolio-hover-ring);
+    background-color: var(--portfolio-hover);
+    color: var(--portfolio-ink);
+  }
+}
 
 .portfolio-footer {
   display: flex;
@@ -439,6 +549,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   html:has(.portfolio-v2) { scroll-behavior: auto; }
-  .portfolio-social { transition: none; }
-  .portfolio-social:active { scale: none; }
+  .portfolio-v2 :is(.portfolio-social, .portfolio-project-links a, .portfolio-education-summary,
+    .portfolio-faq summary, .portfolio-project, .portfolio-icon) { transition: none; }
+  .portfolio-v2 :is(.portfolio-social, .portfolio-project-links a):active { scale: none; }
 }
