@@ -1,73 +1,97 @@
-const EDUCATION = [
+import { ArrowUpRight, ChevronsUpDown, GraduationCap } from "lucide-react";
+import EntryMetadata from "./EntryMetadata";
+
+interface Education {
+  id: string;
+  institution: string;
+  institutionUrl?: string | null;
+  period?: string | null;
+  degree?: string | null;
+  fieldOfStudy?: string | null;
+  details: string[];
+  skills: string[];
+}
+
+const EDUCATION: Education[] = [
   {
-    degree: "Bachelor of Technology in Computer Engineering",
+    id: "tsec",
     institution: "Thadomal Shahani Engineering College",
     institutionUrl: "https://tsec.edu",
-    year: "2021 — 2023",
-    details: [
-      "Graduated with Distinction — CGPA 9.58",
-    ],
+    period: "2021 – 2023",
+    degree: "Bachelor of Technology",
+    fieldOfStudy: "Computer Engineering",
+    details: ["Graduated with Distinction — CGPA 9.58"],
+    skills: [],
   },
   {
-    degree: "Diploma in Computer Engineering",
+    id: "sbmp",
     institution: "Shri Bhagubhai Mafatlal Polytechnic",
     institutionUrl: "https://sbmp.ac.in",
-    year: "2017 - 2022",
-    details: [
-      "Percentage: 94.80%"
-    ],
+    period: "2017 – 2022",
+    degree: "Diploma",
+    fieldOfStudy: "Computer Engineering",
+    details: ["Percentage: 94.80%"],
+    skills: [],
   },
   {
-    degree: "SSC",
+    id: "john-xxiii",
     institution: "John XXIII High School",
     institutionUrl: undefined,
-    year: "2016 - 2017",
-    details: [
-      "Percentage: 90.60%",
-    ],
+    period: "2016 – 2017",
+    degree: "SSC",
+    fieldOfStudy: undefined,
+    details: ["Percentage: 90.60%"],
+    skills: [],
   },
 ];
 
-import { useSectionReveal } from "@/hooks/useSectionReveal";
+// const SKILL_PLACEHOLDERS = ["Skill 1", "Skill 2", "Skill 3"];
 
-const EducationSection = () => {
-  const headerRef = useSectionReveal<HTMLDivElement>();
-
+export default function EducationSection() {
   return (
-    <section id="education" className="py-32 px-6 md:px-16 lg:px-24">
-      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">EDUCATION</h2>
-      </div>
+    <section id="education" className="portfolio-panel" aria-labelledby="education-heading">
+      <h2 id="education-heading"><a href="#education">Education</a></h2>
+      {EDUCATION.map((school) => {
+        const titleId = `education-${school.id}-title`;
+        const institutionUrl = school.institutionUrl?.trim();
+        // const hasSkills = school.skills.length > 0;
 
-      <div className="space-y-16">
-        {EDUCATION.map((edu, i) => (
-          <div key={i} className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 group">
-            <div>
-              <span className="font-mono text-sm text-dim">{edu.year}</span>
-            </div>
-            <div className="border-t border-hairline pt-8 md:pt-0 md:border-t-0 md:border-l md:border-hairline md:pl-8">
-              <h3 className="display-giant text-4xl text-ink mb-1">{edu.degree.toUpperCase()}</h3>
-              <p className="serif-italic text-xl text-dim mb-4">
-                {edu.institutionUrl ? (
-                  <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="hover-line">{edu.institution}</a>
-                ) : (
-                  edu.institution
+        return (
+          <article key={school.id} id={`education-${school.id}`} aria-labelledby={titleId}
+            className="portfolio-body portfolio-entry portfolio-education">
+            <details>
+              <summary className="portfolio-entry-summary">
+                <span className="portfolio-icon portfolio-entry-icon">
+                  <GraduationCap aria-hidden="true" />
+                </span>
+                <span className="portfolio-entry-heading">
+                  <span id={titleId} className="portfolio-entry-title">{school.institution}</span>
+                  <EntryMetadata fields={[
+                    { label: "Study period", value: school.period },
+                    { label: "Degree", value: school.degree },
+                    { label: "Field of study", value: school.fieldOfStudy },
+                  ]} />
+                </span>
+                <ChevronsUpDown className="portfolio-entry-chevron" aria-hidden="true" />
+              </summary>
+              <div className="portfolio-entry-details">
+                <ul className="portfolio-highlights">
+                  {school.details.map((detail) => <li key={detail}>{detail}</li>)}
+                </ul>
+                {institutionUrl && (
+                  <a className="portfolio-link" href={institutionUrl} target="_blank" rel="noopener noreferrer">
+                    Website <ArrowUpRight aria-hidden="true" />
+                  </a>
                 )}
-              </p>
-              <ul className="space-y-2">
-                {edu.details.map((d) => (
-                  <li key={d} className="flex items-start gap-3 font-mono text-base text-dim leading-relaxed">
-                    <span className="mt-1.5 w-1 h-1 bg-dim rounded-full flex-shrink-0" />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
-      </div>
+              </div>
+            </details>
+            {/* <ul className={`portfolio-tags portfolio-entry-tags${hasSkills ? "" : " portfolio-entry-placeholder-tags"}`}
+              aria-label={hasSkills ? "Skills" : "Skill placeholders"}>
+              {(hasSkills ? school.skills : SKILL_PLACEHOLDERS).map((skill) => <li key={skill}>{skill}</li>)}
+            </ul> */}
+          </article>
+        );
+      })}
     </section>
   );
-};
-
-export default EducationSection;
+}

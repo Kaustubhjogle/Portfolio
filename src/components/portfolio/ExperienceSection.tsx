@@ -1,90 +1,78 @@
-import { Link } from "lucide-react";
-import { useSectionReveal } from "@/hooks/useSectionReveal";
+import { ArrowUpRight, BriefcaseBusiness, Building2, ChevronsUpDown } from "lucide-react";
+import { EXPERIENCE, RECOMMENDATIONS_URL } from "@/utils/Experience";
+import EntryMetadata from "./EntryMetadata";
 
-const EXPERIENCES = [
-  {
-    year: "2023 — Now",
-    role: "Software Engineer",
-    company: "IIFL Finance",
-    location: "Mumbai, India",
-    description:
-      "Designed and developed scalable, user-friendly interfaces and migrated 8+ legacy modules to a modern React-based stack for IIFL's digital lending platform, powering 5,000 Cr+ AUM and 300 Cr+ monthly disbursals. Implemented responsive UIs using React, TypeScript, Redux Toolkit, Saga, and Ant Design, improving application speed by 25%",
-    tags: ["React", "TypeScript", "Next.js"],
-  }
-];
-
-const ExperienceSection = () => {
-  const headerRef = useSectionReveal<HTMLDivElement>();
+export default function ExperienceSection() {
+  const companyUrl = EXPERIENCE.companyUrl?.trim();
+  const companyLogo = EXPERIENCE.companyLogo?.trim();
+  const location = EXPERIENCE.location?.trim();
+  const workArrangement = EXPERIENCE.workArrangement?.trim();
 
   return (
-    <section id="experience" className="py-32 px-6 md:px-16 lg:px-24">
-      {/* section header */}
-      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">EXPERIENCE</h2>
-      </div>
-
-      <div className="space-y-0">
-        {EXPERIENCES.map((exp, i) => (
-          <div
-            key={i}
-            className="group border-t border-hairline py-10 grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-6 hover:bg-secondary/30 transition-colors duration-300 -mx-6 md:-mx-16 lg:-mx-24 px-6 md:px-16 lg:px-24"
-          >
-            {/* year */}
-            <div className="pt-1">
-              <span className="font-mono text-sm text-dim">{exp.year}</span>
-            </div>
-
-            {/* content */}
-            <div>
-              <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                <h3 className="serif-italic text-3xl text-ink">{exp.role}</h3>
-                <span className="section-label">@ {exp.company}</span>
-              </div>
-              <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-4">
-                {exp.description} <a href="#skills" className="text-ink hover-line">View my full tech stack →</a>
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {exp.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-xs border border-hairline px-2 py-0.5 text-dim"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* location */}
-            <div className="pt-1 text-right">
-              <span className="font-mono text-xs text-dim">{exp.location}</span>
-            </div>
-          </div>
-        ))}
-        <div className="border-t border-hairline" />
-
-        <div
-          className="group border-t border-hairline py-10 hover:bg-secondary/30 transition-colors duration-300 -mx-6 md:-mx-16 lg:-mx-24 px-6 md:px-16 lg:px-24 flex justify-center"
-        >
-          <div>
-            <div className="flex flex-wrap items-baseline gap-3 mb-3">
-              <h3 className="serif-italic text-3xl text-ink">The best way to learn about me is through the people I've worked with:</h3>
-            </div>
-
-            <div>
-              <a href="https://www.linkedin.com/in/kaustubhjogle/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noopener noreferrer" className="flex flex-row ">
-                <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-2 mr-2">
-                  Recommendations from past teammates on LinkedIn
+    <>
+      <section id="experience" className="portfolio-panel" aria-labelledby="experience-heading">
+        <h2 id="experience-heading"><a href="#experience">Experience</a></h2>
+        <article className="portfolio-body portfolio-experience" aria-labelledby="experience-company">
+          <header className="portfolio-experience-company">
+            <span className="portfolio-icon portfolio-entry-icon">
+              {companyLogo ? (
+                <img src={companyLogo} alt="" loading="lazy" />
+              ) : <Building2 aria-hidden="true" />}
+            </span>
+            <div className="portfolio-experience-company-details">
+              <h3 id="experience-company">
+                {companyUrl ? (
+                  <a className="portfolio-link" href={companyUrl} target="_blank" rel="noopener noreferrer">
+                    {EXPERIENCE.company}
+                  </a>
+                ) : EXPERIENCE.company}
+              </h3>
+              {(location || workArrangement || EXPERIENCE.isCurrent) && (
+                <p className="portfolio-experience-location">
+                  {location && <span>{location}</span>}
+                  {workArrangement && <span>{location ? `(${workArrangement})` : workArrangement}</span>}
+                  {EXPERIENCE.isCurrent && (
+                    <span className="portfolio-current-employer"><span className="sr-only">Current employer</span></span>
+                  )}
                 </p>
-                <Link className="w-4 h-4 my-1" />
-              </a>
+              )}
             </div>
+          </header>
+          <div className="portfolio-entry">
+            <details open>
+              <summary className="portfolio-entry-summary">
+                <span className="portfolio-icon portfolio-entry-icon"><BriefcaseBusiness aria-hidden="true" /></span>
+                <span className="portfolio-entry-heading">
+                  <span className="portfolio-entry-title">{EXPERIENCE.role}</span>
+                  <EntryMetadata fields={[
+                    { label: "Employment type", value: EXPERIENCE.employmentType },
+                    { label: "Employment period", value: EXPERIENCE.period },
+                    { label: "Duration", value: EXPERIENCE.duration },
+                  ]} />
+                </span>
+                <ChevronsUpDown className="portfolio-entry-chevron" aria-hidden="true"/>
+              </summary>
+              <div className="portfolio-entry-details">
+                <ul className="portfolio-highlights">
+                  {EXPERIENCE.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                </ul>
+              </div>
+            </details>
+            <ul className="portfolio-tags portfolio-entry-tags" aria-label="Technologies">
+              {EXPERIENCE.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+            </ul>
           </div>
-
+        </article>
+      </section>
+      <section className="portfolio-panel portfolio-thanks" aria-labelledby="thanks-heading">
+        <h2 id="thanks-heading">Big thanks</h2>
+        <div className="portfolio-body">
+          <p>The best way to learn about me is through the people I've worked with:</p>
+          <a className="portfolio-link" href={RECOMMENDATIONS_URL} target="_blank" rel="noopener noreferrer">
+            Read recommendations on LinkedIn <ArrowUpRight aria-hidden="true" />
+          </a>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
-};
-
-export default ExperienceSection;
+}

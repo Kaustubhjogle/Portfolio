@@ -1,93 +1,97 @@
-const DISCIPLINES = [
-  "UI Architecture",
-  "API Design",
-  "Performance Optimisation",
-  "System Design",
-  "Database Modelling",
-  "DevOps & CI/CD",
+import { Box } from "lucide-react";
+
+type Technology = {
+  name: string;
+  url: string;
+  icon?: string;
+};
+
+const STACK: { id: string; title: string; technologies: Technology[] }[] = [
+  {
+    id: "languages",
+    title: "Languages",
+    technologies: [
+      { name: "TypeScript", url: "https://www.typescriptlang.org/", icon: "typescript" },
+      { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", icon: "javascript" },
+      { name: "Java", url: "https://dev.java/", icon: "java" },
+    ],
+  },
+  {
+    id: "frontend",
+    title: "Frontend",
+    technologies: [
+      { name: "React", url: "https://react.dev/", icon: "react" },
+      { name: "Next.js", url: "https://nextjs.org/", icon: "nextdotjs" },
+      { name: "Tailwind CSS", url: "https://tailwindcss.com/", icon: "tailwindcss" },
+      { name: "Framer Motion", url: "https://motion.dev/" },
+      { name: "Vite", url: "https://vite.dev/", icon: "vite" },
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend & APIs",
+    technologies: [
+      { name: "Spring Boot", url: "https://spring.io/projects/spring-boot", icon: "springboot" },
+      { name: "REST APIs", url: "https://developer.mozilla.org/en-US/docs/Glossary/REST" },
+    ],
+  },
 ];
 
-const STACK = [
-  "TypeScript",
-  "JavaScript",
-  "Java",
-  "React",
-  "Next.js",
-  "Tailwind CSS",
-  "Framer Motion",
-  "Vite",
-  "Spring Boot",
-  "REST APIs",
+const PRACTICES = [
+  {
+    id: "engineering",
+    title: "Engineering",
+    skills: ["UI Architecture", "API Design", "Performance Optimisation", "System Design",
+      "Database Modelling", "DevOps & CI/CD"],
+  },
+  {
+    id: "collaboration",
+    title: "Collaboration",
+    skills: ["Technical Writing", "Code Review", "Mentorship", "Cross-functional Collaboration",
+      "Product Thinking", "Agile / Scrum"],
+  },
 ];
 
-const SOFT_SKILLS = [
-  "Technical Writing",
-  "Code Review",
-  "Mentorship",
-  "Cross-functional Collaboration",
-  "Product Thinking",
-  "Agile / Scrum",
-];
-
-import { useSectionReveal } from "@/hooks/useSectionReveal";
-
-const SkillsSection = () => {
-  const headerRef = useSectionReveal<HTMLDivElement>();
-
+export default function SkillsSection() {
   return (
-    <section id="skills" className="py-32 px-6 md:px-16 lg:px-24">
-      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">SKILLS & STACK</h2>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
-        {/* disciplines */}
-        <div>
-          <p className="section-label mb-6">Disciplines</p>
-          <div className="flex flex-wrap gap-2">
-            {DISCIPLINES.map((s) => (
-              <span
-                key={s}
-                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
-              >
-                {s}
-              </span>
-            ))}
+    <section id="skills" className="portfolio-panel" aria-labelledby="skills-heading">
+      <h2 id="skills-heading"><a href="#skills">Stack</a></h2>
+      <div className="portfolio-stack">
+        {STACK.map(({ id, title, technologies }, index) => (
+          <div key={id} className="portfolio-stack-row">
+            <h3 id={`stack-${id}`}>
+              <span className="portfolio-stack-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              {title}
+            </h3>
+            <ul aria-labelledby={`stack-${id}`} className="portfolio-stack-list">
+              {technologies.map(({ name, url, icon }) => (
+                <li key={name}>
+                  <a className="portfolio-stack-chip" href={url} target="_blank" rel="noopener noreferrer">
+                    {icon ? (
+                      <span className="portfolio-brand-icon" style={{ maskImage: `url(/icons/${icon}.svg)` }}
+                        aria-hidden="true" />
+                    ) : <Box className="portfolio-stack-placeholder" aria-hidden="true" />}
+                    {name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-
-        {/* tech stack */}
-        <div>
-          <p className="section-label mb-6">Tech Stack</p>
-          <div className="flex flex-wrap gap-2">
-            {STACK.map((s) => (
-              <span
-                key={s}
-                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
-              >
-                {s}
+        ))}
+        {PRACTICES.map(({ id, title, skills }, index) => (
+          <div key={id} className="portfolio-stack-row">
+            <h3 id={`stack-${id}`}>
+              <span className="portfolio-stack-index" aria-hidden="true">
+                {String(STACK.length + index + 1).padStart(2, "0")}
               </span>
-            ))}
+              {title}
+            </h3>
+            <ul aria-labelledby={`stack-${id}`} className="portfolio-stack-list">
+              {skills.map((skill) => <li key={skill} className="portfolio-stack-chip">{skill}</li>)}
+            </ul>
           </div>
-        </div>
-
-        {/* soft skills */}
-        <div>
-          <p className="section-label mb-6">Soft Skills</p>
-          <div className="flex flex-wrap gap-2">
-            {SOFT_SKILLS.map((s) => (
-              <span
-                key={s}
-                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
-};
-
-export default SkillsSection;
+}

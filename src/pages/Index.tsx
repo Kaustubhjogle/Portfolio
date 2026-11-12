@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import HeroSection from "@/components/portfolio/HeroSection";
 import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import SkillsSection from "@/components/portfolio/SkillsSection";
@@ -6,44 +6,33 @@ import ProjectSection from "@/components/portfolio/ProjectSection";
 import EducationSection from "@/components/portfolio/EducationSection";
 import FAQSection from "@/components/portfolio/FAQSection";
 import Footer from "@/components/portfolio/Footer";
-import BottomNavbar from "@/components/layout/BottomNavbar";
-import RobotGame from "@/components/game/RobotGame";
-import GameToggle from "@/components/game/GameToggle";
+import "./portfolio.css";
 
-const Index = () => {
-  const [gameActive, setGameActive] = useState(false);
-
+export default function Index() {
   return (
-    <div className="bg-paper min-h-screen">
-      {/* subtle noise overlay for texture */}
-      <div className="noise-overlay" />
-
-      <HeroSection />
-      <BottomNavbar />
-
-      {/* section divider */}
-      <div className="h-px bg-hairline mx-6 md:mx-16 lg:mx-24" />
-
-      <ExperienceSection />
-      <div className="h-px bg-hairline mx-6 md:mx-16 lg:mx-24" />
-
-      <SkillsSection />
-      <div className="h-px bg-hairline mx-6 md:mx-16 lg:mx-24" />
-
-      <ProjectSection />
-      <div className="h-px bg-hairline mx-6 md:mx-16 lg:mx-24" />
-
-      <EducationSection />
-      <div className="h-px bg-hairline mx-6 md:mx-16 lg:mx-24" />
-
-      <FAQSection />
-
-      <Footer />
-
-      <RobotGame active={gameActive} />
-      <GameToggle active={gameActive} onToggle={() => setGameActive(!gameActive)} />
+    <div id="top" className="portfolio-v2">
+      <a className="portfolio-skip" href="#intro">Skip to content</a>
+      <header className="portfolio-header">
+        <div className="portfolio-column portfolio-header-inner">
+          <a href="#top" className="portfolio-wordmark" aria-label="Kaustubh Jogle home">KJ</a>
+          <nav aria-label="Portfolio">
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="/Kaustubh_Jogle_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              Résumé <ArrowUpRight aria-hidden="true" />
+            </a>
+          </nav>
+        </div>
+      </header>
+      <main className="portfolio-column">
+        <HeroSection />
+        <ExperienceSection />
+        <ProjectSection />
+        <SkillsSection />
+        <EducationSection />
+        <FAQSection />
+        <Footer />
+      </main>
     </div>
   );
-};
-
-export default Index;
+}

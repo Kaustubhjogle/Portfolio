@@ -1,66 +1,79 @@
+import { ExternalLink, Github, Image } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { PROJECTS } from "@/utils/Projects";
-import { Github, ExternalLink } from "lucide-react";
-import { useSectionReveal } from "@/hooks/useSectionReveal";
 
-const ProjectSection = () => {
-  const headerRef = useSectionReveal<HTMLDivElement>();
+const FEATURED_COUNT = 3;
+
+export default function ProjectSection() {
+  const [showAll, setShowAll] = useState(false);
+  const firstAdditionalProject = useRef<HTMLElement>(null);
+  const visibleProjects = showAll ? PROJECTS : PROJECTS.slice(0, FEATURED_COUNT);
+
+  useEffect(() => {
+    if (showAll) firstAdditionalProject.current?.focus();
+  }, [showAll]);
 
   return (
-    <section id="projects" className="py-32 px-6 md:px-16 lg:px-24">
-      {/* section header */}
-      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">PROJECTS</h2>
-      </div>
-
-      <div className="space-y-0">
-        {PROJECTS.map((project, i) => (
-          <div
-            key={i}
-            className="group border-t border-hairline py-10 hover:bg-secondary/30 transition-colors duration-300 -mx-6 md:-mx-16 lg:-mx-24 px-6 md:px-16 lg:px-24"
-          >
-            <div className="ml-10">
-              <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                <h3 className="serif-italic text-4xl text-ink">{project.title}</h3>
-              </div>
-              <ul className="font-mono text-base text-dim leading-relaxed max-w-4xl mb-4 list-none p-0 space-y-2">
-                {project.description.map((d) => (
-                  <li key={d} className="flex items-start gap-3 font-mono text-base text-dim leading-relaxed">
-                    <span className="mt-1.5 w-1 h-1 bg-dim rounded-full flex-shrink-0" />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-xs border border-hairline px-2 py-0.5 text-dim"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-4">
-                {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-dim hover:text-ink hover-line transition-colors flex items-center gap-2">
-                    <Github className="w-4 h-4" />
-                    View Source
-                  </a>
-                )}
-                {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-dim hover:text-ink hover-line transition-colors flex items-center gap-2">
-                    <ExternalLink className="w-4 h-4" />
-                    Try it Live
-                  </a>
-                )}
-              </div>
+    <section id="projects" className="portfolio-panel" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects <span className="portfolio-count">{PROJECTS.length}</span></h2>
+      <div id="project-list" className="portfolio-body portfolio-projects">
+        {visibleProjects.map((project, index) => (
+          <article key={project.title} className="portfolio-project"
+            ref={index === FEATURED_COUNT ? firstAdditionalProject : undefined}
+            tabIndex={index === FEATURED_COUNT ? -1 : undefined}
+            aria-label={project.title}>
+            <div className="portfolio-project-media">
+              {project.image ? (
+                <img src={project.image.src} alt={project.image.alt} loading="lazy" />
+              ) : (
+                <div className="portfolio-project-placeholder">
+                  <Image aria-hidden="true" />
+                  <span>Project image</span>
+                </div>
+              )}
             </div>
-          </div>
+            <div className="portfolio-project-details">
+              <div className="portfolio-project-header">
+                <h3>{project.title}</h3>
+                <div className="portfolio-project-links">
+                  {project.liveUrl && (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+                      aria-label={`${project.liveLabel ?? "Live"}: ${project.title}`}>
+                      <ExternalLink aria-hidden="true" /> {project.liveLabel ?? "Live"}
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                      aria-label={`GitHub: ${project.title}`}>
+                      <Github aria-hidden="true" /> GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+              <p className="portfolio-muted">{project.summary}</p>
+              {project.tags.length > 0 && (
+                <>
+                  <h4>Technologies Used</h4>
+                  <ul className="portfolio-tags">
+                    {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                  </ul>
+                </>
+              )}
+            </div>
+          </article>
         ))}
-        <div className="border-t border-hairline" />
       </div>
+      {PROJECTS.length > FEATURED_COUNT && (
+        <div className="portfolio-project-toggle">
+          <button type="button" aria-expanded={showAll} aria-controls="project-list"
+            onClick={() => {
+              if (showAll) document.getElementById("projects-heading")?.scrollIntoView({ block: "start" });
+              setShowAll(!showAll);
+            }}>
+            {showAll ? "View fewer" : "View more"}
+          </button>
+        </div>
+      )}
     </section>
   );
-};
-
-export default ProjectSection;
+}
