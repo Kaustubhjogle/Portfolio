@@ -29,65 +29,24 @@ const SOFT_SKILLS = [
   "Agile / Scrum",
 ];
 
-import { useSectionReveal } from "@/hooks/useSectionReveal";
+const GROUPS = [
+  { title: "Technologies", skills: STACK },
+  { title: "Engineering", skills: DISCIPLINES },
+  { title: "Collaboration", skills: SOFT_SKILLS },
+];
 
-const SkillsSection = () => {
-  const headerRef = useSectionReveal<HTMLDivElement>();
-
+export default function SkillsSection() {
   return (
-    <section id="skills" className="py-32 px-6 md:px-16 lg:px-24">
-      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">SKILLS & STACK</h2>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
-        {/* disciplines */}
-        <div>
-          <p className="section-label mb-6">Disciplines</p>
-          <div className="flex flex-wrap gap-2">
-            {DISCIPLINES.map((s) => (
-              <span
-                key={s}
-                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
+    <section id="skills" className="portfolio-panel" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Stack</h2>
+      {GROUPS.map(({ title, skills }) => (
+        <div key={title} className="portfolio-body portfolio-stack">
+          <h3>{title}</h3>
+          <ul className="portfolio-tags">
+            {skills.map((skill) => <li key={skill}>{skill}</li>)}
+          </ul>
         </div>
-
-        {/* tech stack */}
-        <div>
-          <p className="section-label mb-6">Tech Stack</p>
-          <div className="flex flex-wrap gap-2">
-            {STACK.map((s) => (
-              <span
-                key={s}
-                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* soft skills */}
-        <div>
-          <p className="section-label mb-6">Soft Skills</p>
-          <div className="flex flex-wrap gap-2">
-            {SOFT_SKILLS.map((s) => (
-              <span
-                key={s}
-                className="font-mono text-sm text-dim border border-hairline px-3 py-1.5 hover:border-ink hover:text-ink transition-colors duration-200"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+      ))}
     </section>
   );
-};
-
-export default SkillsSection;
+}

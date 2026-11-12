@@ -1,90 +1,38 @@
-import { Link } from "lucide-react";
-import { useSectionReveal } from "@/hooks/useSectionReveal";
+import { ArrowUpRight, Building2, CalendarDays, MapPin } from "lucide-react";
+import { EXPERIENCE, RECOMMENDATIONS_URL } from "@/utils/Experience";
 
-const EXPERIENCES = [
-  {
-    year: "2023 — Now",
-    role: "Software Engineer",
-    company: "IIFL Finance",
-    location: "Mumbai, India",
-    description:
-      "Designed and developed scalable, user-friendly interfaces and migrated 8+ legacy modules to a modern React-based stack for IIFL's digital lending platform, powering 5,000 Cr+ AUM and 300 Cr+ monthly disbursals. Implemented responsive UIs using React, TypeScript, Redux Toolkit, Saga, and Ant Design, improving application speed by 25%",
-    tags: ["React", "TypeScript", "Next.js"],
-  }
-];
-
-const ExperienceSection = () => {
-  const headerRef = useSectionReveal<HTMLDivElement>();
-
+export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-32 px-6 md:px-16 lg:px-24">
-      {/* section header */}
-      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">EXPERIENCE</h2>
-      </div>
-
-      <div className="space-y-0">
-        {EXPERIENCES.map((exp, i) => (
-          <div
-            key={i}
-            className="group border-t border-hairline py-10 grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-6 hover:bg-secondary/30 transition-colors duration-300 -mx-6 md:-mx-16 lg:-mx-24 px-6 md:px-16 lg:px-24"
-          >
-            {/* year */}
-            <div className="pt-1">
-              <span className="font-mono text-sm text-dim">{exp.year}</span>
-            </div>
-
-            {/* content */}
-            <div>
-              <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                <h3 className="serif-italic text-3xl text-ink">{exp.role}</h3>
-                <span className="section-label">@ {exp.company}</span>
-              </div>
-              <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-4">
-                {exp.description} <a href="#skills" className="text-ink hover-line">View my full tech stack →</a>
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {exp.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-xs border border-hairline px-2 py-0.5 text-dim"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* location */}
-            <div className="pt-1 text-right">
-              <span className="font-mono text-xs text-dim">{exp.location}</span>
-            </div>
-          </div>
-        ))}
-        <div className="border-t border-hairline" />
-
-        <div
-          className="group border-t border-hairline py-10 hover:bg-secondary/30 transition-colors duration-300 -mx-6 md:-mx-16 lg:-mx-24 px-6 md:px-16 lg:px-24 flex justify-center"
-        >
+    <>
+      <section id="experience" className="portfolio-panel" aria-labelledby="experience-heading">
+        <h2 id="experience-heading">Experience</h2>
+        <article className="portfolio-body portfolio-record">
+          <div className="portfolio-icon portfolio-record-icon"><Building2 aria-hidden="true" /></div>
           <div>
-            <div className="flex flex-wrap items-baseline gap-3 mb-3">
-              <h3 className="serif-italic text-3xl text-ink">The best way to learn about me is through the people I've worked with:</h3>
-            </div>
-
-            <div>
-              <a href="https://www.linkedin.com/in/kaustubhjogle/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noopener noreferrer" className="flex flex-row ">
-                <p className="font-mono text-base text-dim leading-relaxed max-w-xl mb-2 mr-2">
-                  Recommendations from past teammates on LinkedIn
-                </p>
-                <Link className="w-4 h-4 my-1" />
-              </a>
+            <h3>{EXPERIENCE.company}</h3>
+            <p className="portfolio-meta"><MapPin aria-hidden="true" />{EXPERIENCE.location}</p>
+            <div className="portfolio-role">
+              <h4>{EXPERIENCE.role}</h4>
+              <p className="portfolio-meta"><CalendarDays aria-hidden="true" />{EXPERIENCE.period}</p>
+              <ul className="portfolio-highlights">
+                {EXPERIENCE.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+              </ul>
+              <ul className="portfolio-tags" aria-label="Technologies">
+                {EXPERIENCE.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+              </ul>
             </div>
           </div>
-
+        </article>
+      </section>
+      <section className="portfolio-panel portfolio-thanks" aria-labelledby="thanks-heading">
+        <h2 id="thanks-heading">Big thanks</h2>
+        <div className="portfolio-body">
+          <p>The best way to learn about me is through the people I've worked with:</p>
+          <a className="portfolio-link" href={RECOMMENDATIONS_URL} target="_blank" rel="noopener noreferrer">
+            Read recommendations on LinkedIn <ArrowUpRight aria-hidden="true" />
+          </a>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
-};
-
-export default ExperienceSection;
+}

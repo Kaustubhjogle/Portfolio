@@ -1,9 +1,11 @@
+import { ArrowUpRight, CalendarDays, GraduationCap } from "lucide-react";
+
 const EDUCATION = [
   {
     degree: "Bachelor of Technology in Computer Engineering",
     institution: "Thadomal Shahani Engineering College",
     institutionUrl: "https://tsec.edu",
-    year: "2021 — 2023",
+    year: "2021 – 2023",
     details: [
       "Graduated with Distinction — CGPA 9.58",
     ],
@@ -12,7 +14,7 @@ const EDUCATION = [
     degree: "Diploma in Computer Engineering",
     institution: "Shri Bhagubhai Mafatlal Polytechnic",
     institutionUrl: "https://sbmp.ac.in",
-    year: "2017 - 2022",
+    year: "2017 – 2022",
     details: [
       "Percentage: 94.80%"
     ],
@@ -21,53 +23,36 @@ const EDUCATION = [
     degree: "SSC",
     institution: "John XXIII High School",
     institutionUrl: undefined,
-    year: "2016 - 2017",
+    year: "2016 – 2017",
     details: [
       "Percentage: 90.60%",
     ],
   },
 ];
 
-import { useSectionReveal } from "@/hooks/useSectionReveal";
-
-const EducationSection = () => {
-  const headerRef = useSectionReveal<HTMLDivElement>();
-
+export default function EducationSection() {
   return (
-    <section id="education" className="py-32 px-6 md:px-16 lg:px-24">
-      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">EDUCATION</h2>
-      </div>
-
-      <div className="space-y-16">
-        {EDUCATION.map((edu, i) => (
-          <div key={i} className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 group">
-            <div>
-              <span className="font-mono text-sm text-dim">{edu.year}</span>
-            </div>
-            <div className="border-t border-hairline pt-8 md:pt-0 md:border-t-0 md:border-l md:border-hairline md:pl-8">
-              <h3 className="display-giant text-4xl text-ink mb-1">{edu.degree.toUpperCase()}</h3>
-              <p className="serif-italic text-xl text-dim mb-4">
-                {edu.institutionUrl ? (
-                  <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="hover-line">{edu.institution}</a>
-                ) : (
-                  edu.institution
-                )}
-              </p>
-              <ul className="space-y-2">
-                {edu.details.map((d) => (
-                  <li key={d} className="flex items-start gap-3 font-mono text-base text-dim leading-relaxed">
-                    <span className="mt-1.5 w-1 h-1 bg-dim rounded-full flex-shrink-0" />
-                    {d}
-                  </li>
-                ))}
-              </ul>
+    <section id="education" className="portfolio-panel" aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      {EDUCATION.map((school) => (
+        <article key={school.institution} className="portfolio-body portfolio-record">
+          <div className="portfolio-icon portfolio-record-icon"><GraduationCap aria-hidden="true" /></div>
+          <div>
+            <h3>
+              {school.institutionUrl ? (
+                <a className="portfolio-link" href={school.institutionUrl} target="_blank" rel="noopener noreferrer">
+                  {school.institution} <ArrowUpRight aria-hidden="true" />
+                </a>
+              ) : school.institution}
+            </h3>
+            <p className="portfolio-meta"><CalendarDays aria-hidden="true" />{school.year}</p>
+            <div className="portfolio-role">
+              <h4>{school.degree}</h4>
+              {school.details.map((detail) => <p key={detail} className="portfolio-muted">{detail}</p>)}
             </div>
           </div>
-        ))}
-      </div>
+        </article>
+      ))}
     </section>
   );
-};
-
-export default EducationSection;
+}

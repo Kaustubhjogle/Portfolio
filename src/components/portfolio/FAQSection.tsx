@@ -1,3 +1,5 @@
+import { ChevronDown } from "lucide-react";
+
 const FAQS = [
   {
     question: "What technologies do I work with?",
@@ -17,38 +19,19 @@ const FAQS = [
   {
     question: "Am I available for hire?",
     answer:
-      "Yes — I'm currently available for full-time software engineering roles. You can reach me via email, connect on LinkedIn, or check out my work on GitHub. Links are at the top and bottom of this page.",
+      "Yes — I'm currently available for full-time software engineering roles. You can reach me via email, connect on LinkedIn, or check out my work on GitHub. Contact links are at the top of this page.",
   },
 ];
-import { useSectionReveal } from "@/hooks/useSectionReveal";
-
-const FAQSection = () => {
-  const headerRef = useSectionReveal<HTMLDivElement>();
-
+export default function FAQSection() {
   return (
-    <section id="faq" className="py-32 px-6 md:px-16 lg:px-24">
-      <div ref={headerRef} className="flex items-center gap-6 mb-20 section-reveal">
-        <h2 className="display-giant text-[clamp(1.5rem,4vw,4rem)] text-ink">FAQ</h2>
-      </div>
-
-      <div className="space-y-0">
-        {FAQS.map((faq, i) => (
-          <div
-            key={i}
-            className="group border-t border-hairline py-10 hover:bg-secondary/30 transition-colors duration-300 -mx-6 md:-mx-16 lg:-mx-24 px-6 md:px-16 lg:px-24"
-          >
-            <h3 className="serif-italic text-2xl md:text-3xl text-ink mb-4">
-              {faq.question}
-            </h3>
-            <p className="font-mono text-base text-dim leading-relaxed max-w-3xl">
-              {faq.answer}
-            </p>
-          </div>
-        ))}
-        <div className="border-t border-hairline" />
-      </div>
+    <section id="faq" className="portfolio-panel" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">FAQ</h2>
+      {FAQS.map(({ question, answer }) => (
+        <details key={question} className="portfolio-faq">
+          <summary>{question}<ChevronDown aria-hidden="true" /></summary>
+          <p className="portfolio-muted">{answer}</p>
+        </details>
+      ))}
     </section>
   );
-};
-
-export default FAQSection;
+}
