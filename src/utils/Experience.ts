@@ -14,8 +14,8 @@ interface Experience {
 }
 
 export const EXPERIENCE: Experience = {
-  period: "2023 – Present",
-  role: "Software Engineer",
+  period: "June 2023 – Present",
+  role: "Full Stack Developer",
   company: "IIFL Finance",
   companyLogo: "",
   location: "Mumbai, India",
@@ -24,10 +24,16 @@ export const EXPERIENCE: Experience = {
   employmentType: "",
   duration: "",
   highlights: [
-    "Migrated 8+ legacy modules to React for a digital lending platform that powers ₹5,000 crore+ in assets under management and ₹300 crore+ in monthly disbursals.",
-    "Built responsive interfaces with React, TypeScript, Redux Toolkit, Saga, and Ant Design, improving application speed by 25%.",
+    "Migrated 8+ legacy modules to React and TypeScript for a digital lending platform supporting over ₹5,000 crore in assets under management and ₹300 crore in monthly disbursals.",
+    "Automated underwriting, KYC verification, agreement signing, and mandate processing with React, Redux Toolkit, Redux-Saga, and REST APIs, reducing manual intervention by 60%.",
+    "Built Java Spring Boot REST APIs for loan management and migrated MySQL stored-procedure logic into Spring Data JPA repositories and Hibernate-backed services.",
+    "Integrated financial services from TransUnion CIBIL, FinBox, Sentinel, and Phonon into the lending workflow.",
+    "Led vulnerability assessment and penetration testing across frontend and backend systems, coordinating audits and remediating high-risk findings in line with OWASP standards.",
+    "Containerized React applications with Docker and automated deployments through Azure Container Registry and Azure Kubernetes Service, with rolling updates, automatic rollback, and audit logs.",
+    "Ran user acceptance testing across three business-critical modules and resolved production bugs, with zero major rollback incidents.",
+    "Coordinated sprint delivery with five cross-functional teams across product, backend, QA, compliance, and operations.",
   ],
-  technologies: ["React", "TypeScript", "Redux Toolkit", "Ant Design"],
+  technologies: ["React", "TypeScript", "Redux Toolkit", "Redux-Saga", "Java", "Spring Boot", "Spring Data JPA", "Hibernate", "MySQL", "Docker", "Azure Kubernetes Service"],
 };
 
 export const RECOMMENDATIONS_URL = "https://www.linkedin.com/in/kaustubhjogle/details/recommendations/";

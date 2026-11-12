@@ -41,7 +41,7 @@ export default function HeroSection() {
       <section id="intro" tabIndex={-1} aria-labelledby="portfolio-name">
         <div className="portfolio-hero">
           <h1 id="portfolio-name">Kaustubh Jogle</h1>
-          <p>Software Engineer</p>
+          <p>{EXPERIENCE.role}</p>
         </div>
         <div className="portfolio-contact" aria-label="Contact and location">
           <div className="portfolio-contact-column">
@@ -93,7 +93,7 @@ export default function HeroSection() {
         <h2 id="greeting">{greeting.heading}</h2>
         <div className="portfolio-body">
           <p className="portfolio-greeting-line portfolio-muted">{greeting.line}</p>
-          <p>Software Developer at IIFL Finance in Mumbai, India. I use React, Next.js, TypeScript, Spring Boot, and REST APIs to build fast, user-centric web apps.</p>
+          <p>I’m a full-stack developer in Mumbai with 3+ years of experience building fintech web applications at IIFL Finance. I work across React and TypeScript interfaces, Java Spring Boot APIs, and MySQL. I automate lending workflows and build Docker-based deployment pipelines for Azure Kubernetes Service.</p>
         </div>
       </section>
     </>

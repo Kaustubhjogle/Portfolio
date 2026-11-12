@@ -2,7 +2,7 @@ import { Box } from "lucide-react";
 
 type Technology = {
   name: string;
-  url: string;
+  url?: string;
   icon?: string;
 };
 
@@ -25,6 +25,9 @@ const STACK: { id: string; title: string; technologies: Technology[] }[] = [
       { name: "Tailwind CSS", url: "https://tailwindcss.com/", icon: "tailwindcss" },
       { name: "Framer Motion", url: "https://motion.dev/" },
       { name: "Vite", url: "https://vite.dev/", icon: "vite" },
+      { name: "HTML5" }, { name: "CSS3" }, { name: "Ant Design" },
+      { name: "shadcn/ui" }, { name: "Redux Toolkit" }, { name: "Redux-Saga" },
+      { name: "Axios" }, { name: "Webpack" },
     ],
   },
   {
@@ -33,11 +36,19 @@ const STACK: { id: string; title: string; technologies: Technology[] }[] = [
     technologies: [
       { name: "Spring Boot", url: "https://spring.io/projects/spring-boot", icon: "springboot" },
       { name: "REST APIs", url: "https://developer.mozilla.org/en-US/docs/Glossary/REST" },
+      { name: "Spring Data JPA" }, { name: "Hibernate" }, { name: "Maven" },
+      { name: "JWT Authentication" },
     ],
   },
 ];
 
 const PRACTICES = [
+  { id: "databases", title: "Databases", skills: ["MySQL", "SQL Server"] },
+  {
+    id: "tools",
+    title: "Tools & Platforms",
+    skills: ["Docker", "Azure Container Registry", "Azure Kubernetes Service", "Git", "GitHub Actions", "Jira", "Postman"],
+  },
   {
     id: "engineering",
     title: "Engineering",
@@ -64,17 +75,24 @@ export default function SkillsSection() {
               {title}
             </h3>
             <ul aria-labelledby={`stack-${id}`} className="portfolio-stack-list">
-              {technologies.map(({ name, url, icon }) => (
-                <li key={name}>
-                  <a className="portfolio-stack-chip" href={url} target="_blank" rel="noopener noreferrer">
+              {technologies.map(({ name, url, icon }) => {
+                const label = (
+                  <>
                     {icon ? (
                       <span className="portfolio-brand-icon" style={{ maskImage: `url(/icons/${icon}.svg)` }}
                         aria-hidden="true" />
                     ) : <Box className="portfolio-stack-placeholder" aria-hidden="true" />}
                     {name}
-                  </a>
-                </li>
-              ))}
+                  </>
+                );
+                return (
+                  <li key={name}>
+                    {url ? (
+                      <a className="portfolio-stack-chip" href={url} target="_blank" rel="noopener noreferrer">{label}</a>
+                    ) : <span className="portfolio-stack-chip">{label}</span>}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}

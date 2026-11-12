@@ -27,7 +27,7 @@ const EDUCATION: Education[] = [
     id: "sbmp",
     institution: "Shri Bhagubhai Mafatlal Polytechnic",
     institutionUrl: "https://sbmp.ac.in",
-    period: "2017 – 2022",
+    period: "2017 – 2020",
     degree: "Diploma",
     fieldOfStudy: "Computer Engineering",
     details: ["Percentage: 94.80%"],

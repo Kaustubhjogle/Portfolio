@@ -33,6 +33,7 @@
   --portfolio-shadow-lift: light-dark(rgb(0 0 0 / 9%), transparent);
   --portfolio-mono: "Geist Mono", ui-monospace, monospace;
   --portfolio-inset: clamp(16px, 4vw, 28px);
+  --portfolio-header-height: 64px;
   min-height: 100vh;
   background: var(--portfolio-paper);
   color: var(--portfolio-ink);
@@ -52,7 +53,7 @@
   outline-offset: 3px;
 }
 
-.portfolio-v2 [id] { scroll-margin-top: 16px; }
+.portfolio-v2 main [id] { scroll-margin-top: calc(var(--portfolio-header-height) + 16px); }
 
 .portfolio-column {
   max-width: 736px;
@@ -90,13 +91,19 @@
 }
 
 .portfolio-skip:not(:focus) { transform: translateY(-150%); }
-.portfolio-header { border-block: 1px solid var(--portfolio-rule); }
+.portfolio-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 10;
+  border-block: 1px solid var(--portfolio-rule);
+  background: var(--portfolio-paper);
+}
 
 .portfolio-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 62px;
+  min-height: calc(var(--portfolio-header-height) - 2px);
   gap: 8px;
   padding-inline: var(--portfolio-inset);
 }

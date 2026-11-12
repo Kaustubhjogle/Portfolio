@@ -26,7 +26,7 @@ Visitors typically spend 30–90 seconds scanning before deciding to engage furt
 
 - Single-page portfolio, no backend, no authentication.
 - Deployed to Vercel with Vercel Analytics. Domain: kaustubhjogle.site.
-- Sections: Hero with typewriter role cycling, Experience (IIFL Finance, 2023–present), Skills (radar-style proficiency), Tech Stack (languages/frontend/backend), Projects (WhatTheCron, PromptPane), Education (B.Tech, Diploma, SSC), FAQ (structured data), Footer.
+- Sections: Hero with typewriter role cycling, Experience (IIFL Finance, June 2023–present), Skills (radar-style proficiency), Tech Stack (languages/frontend/backend), Projects (WhatTheCron, PromptPane), Education (B.Tech, Diploma, SSC), FAQ (structured data), Footer.
 - No CMS, no blog, no API integrations beyond Vercel Analytics.
 - Currently seeking full-time roles — "Available for full-time roles" is a live status, not permanent copy.
 
@@ -38,7 +38,7 @@ Visitors typically spend 30–90 seconds scanning before deciding to engage furt
 
 ## Evidence on Hand
 
-- Real professional experience at IIFL Finance with quantified impact (5,000 Cr+ AUM, 300 Cr+ monthly disbursals, 25% speed improvement, 8+ module migrations).
+- Real professional experience at IIFL Finance with quantified impact (5,000 Cr+ AUM, 300 Cr+ monthly disbursals, 60% fewer manual interventions in lending workflows, 8+ module migrations).
 - Two shipped projects: WhatTheCron (live at what-the-cron.vercel.app, source on GitHub) and PromptPane (published on Chrome Web Store).
 - Education records with high marks (CGPA 9.58, 94.80%).
 - LinkedIn recommendations available from past teammates.

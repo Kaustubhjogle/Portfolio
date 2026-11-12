@@ -36,18 +36,6 @@ export const PROJECTS: Project[] = [
     tags: ["JavaScript", "Chrome Extensions"],
   },
   {
-    title: "Uncommit the Dead",
-    summary:
-      "Rediscover unfinished side projects in a haunted graveyard that reads Git history and drafts revival ideas with local AI.",
-    githubUrl: "https://github.com/Kaustubhjogle/Uncommit-the-Dead",
-    liveUrl: "https://uncommit-the-dead.vercel.app",
-    image: {
-      src: "/projects/uncommit-the-dead.png",
-      alt: "Uncommit the Dead project preview",
-    },
-    tags: ["Next.js", "React", "TypeScript", "Ollama"],
-  },
-  {
     title: "Swatch Studio",
     summary:
       "Explore 50 shades and seven palettes on a 3D filament swatch wheel. Lift, compare, and copy individual colours.",
@@ -66,6 +54,18 @@ export const PROJECTS: Project[] = [
     image: { src: "/projects/next-of-care.png", alt: "Next of Care preview" },
   },
   {
+    title: "Uncommit the Dead",
+    summary:
+      "Rediscover unfinished side projects in a haunted graveyard that reads Git history and drafts revival ideas with local AI.",
+    githubUrl: "https://github.com/Kaustubhjogle/Uncommit-the-Dead",
+    liveUrl: "https://uncommit-the-dead.vercel.app",
+    image: {
+      src: "/projects/uncommit-the-dead.png",
+      alt: "Uncommit the Dead project preview",
+    },
+    tags: ["Next.js", "React", "TypeScript", "Ollama"],
+  },
+  {
     title: "PayUnfold",
     summary:
       "Review an Indian job offer for terms to ask about, then compare monthly fixed pay with a payslip.",
@@ -82,14 +82,6 @@ export const PROJECTS: Project[] = [
       "Turn a Mumbai train or metro stop into a short outdoor mission using nearby green spaces and wildlife observations.",
     githubUrl: "https://github.com/Kaustubhjogle/platform-to-park",
     tags: ["Next.js", "TypeScript", "OpenStreetMap", "iNaturalist", "Ollama"],
-  },
-  {
-    title: "Aaj Kya Banega?",
-    summary:
-      "A local-first meal planner that suggests what to cook from the ingredients already in your fridge.",
-    githubUrl: "https://github.com/Kaustubhjogle/AajKyaBanega",
-    liveUrl: "https://aaj-kya-banega-steel.vercel.app",
-    tags: ["Next.js", "React", "TypeScript", "Motion"],
   },
   {
     title: "Bhai Ke Dohe",

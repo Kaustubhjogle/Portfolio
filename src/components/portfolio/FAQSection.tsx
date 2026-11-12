@@ -4,12 +4,12 @@ const FAQS = [
   {
     question: "What technologies do I work with?",
     answer:
-      "I work primarily with TypeScript, JavaScript, and Java. On the frontend, I use React, Next.js, Tailwind CSS, Framer Motion, and Vite. On the backend, I work with Java, Spring Boot, and REST APIs. My strongest areas are UI Architecture, API Design, Performance Optimisation, System Design, Database Modelling, and DevOps/CI/CD.",
+      "I build frontend applications with React, Next.js, TypeScript, and Redux Toolkit. For backend work I use Java, Spring Boot, REST APIs, Spring Data JPA, Hibernate, and MySQL. I also use Docker and CI/CD pipelines to deploy applications to Azure Kubernetes Service.",
   },
   {
     question: "What's my professional experience?",
     answer:
-      "I'm currently a Software Engineer at IIFL Finance in Mumbai, where I've been since 2023. I design and develop scalable, user-friendly interfaces and have migrated 8+ legacy modules to a modern React-based stack for IIFL's digital lending platform, which powers 5,000 Cr+ AUM and 300 Cr+ monthly disbursals.",
+      "I’ve been a Full Stack Developer at IIFL Finance in Mumbai since June 2023. I migrated 8+ legacy modules to React and TypeScript and helped automate lending workflows, reducing manual intervention by 60%. My work also covers Spring Boot APIs, database migration, security audits, and Azure deployments.",
   },
   {
     question: "What have I built?",
