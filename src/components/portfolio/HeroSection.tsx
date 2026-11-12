@@ -17,15 +17,17 @@ const socialIcons = {
 };
 
 function getGreeting(hour: number) {
-  if (hour < 12) return "Good morning";
-  if (hour < 18) return "Good afternoon";
-  return "Good evening";
+  if (hour < 5 || hour >= 22) return { heading: "Good night", line: "Still up? So is the build." };
+  if (hour < 12) return { heading: "Good morning", line: "Coffee first, code second." };
+  if (hour < 18) return { heading: "Good afternoon", line: "Deep in a build, probably." };
+  return { heading: "Good evening", line: "One more commit?" };
 }
 
 export default function HeroSection() {
   const location = EXPERIENCE.location?.trim();
   const [minute, setMinute] = useState(() => Math.floor(Date.now() / 60_000));
   const now = new Date(minute * 60_000);
+  const greeting = getGreeting(now.getHours());
   const email = HYPERLINKS.find((link) => link.name === "Email");
   const time = mumbaiTime.format(now);
 
@@ -88,9 +90,10 @@ export default function HeroSection() {
         </div>
       </section>
       <section className="portfolio-panel" aria-labelledby="greeting">
-        <h2 id="greeting">{getGreeting(now.getHours())}</h2>
+        <h2 id="greeting">{greeting.heading}</h2>
         <div className="portfolio-body">
-          <p>I build web applications and tools for developers. At IIFL Finance, I work on digital lending software. I also built WhatTheCron, a cron translator, and PromptPane, a Chrome extension for navigating long AI chats.</p>
+          <p className="portfolio-greeting-line portfolio-muted">{greeting.line}</p>
+          <p>Software Developer at IIFL Finance in Mumbai, India. I use React, Next.js, TypeScript, Spring Boot, and REST APIs to build fast, user-centric web apps.</p>
         </div>
       </section>
     </>
