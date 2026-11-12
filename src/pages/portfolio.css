@@ -254,6 +254,7 @@
 .portfolio-body { padding: 15px var(--portfolio-inset); }
 .portfolio-body + .portfolio-body { border-top: 1px solid var(--portfolio-rule); }
 .portfolio-body p { max-width: 68ch; }
+.portfolio-greeting-line { margin-bottom: 8px; }
 
 .portfolio-v2 h3,
 .portfolio-v2 h4 {
@@ -500,6 +501,16 @@
 }
 
 .portfolio-project-links svg { width: 14px; height: 14px; }
+.portfolio-project-toggle { display: flex; justify-content: center; padding: 0 var(--portfolio-inset) 16px; }
+.portfolio-project-toggle button {
+  min-height: 44px;
+  padding: 6px 16px;
+  border: 1px solid var(--portfolio-rule);
+  border-radius: 6px;
+  background: var(--portfolio-wash);
+  font-weight: 500;
+}
+.portfolio-project-toggle button:hover { background: var(--portfolio-hover); }
 .portfolio-count { margin-inline-start: 3px; font: 400 13px/1 var(--portfolio-mono); color: var(--portfolio-muted); }
 .portfolio-stack-row {
   display: grid;
